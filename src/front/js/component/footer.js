@@ -11,20 +11,20 @@ export const Footer = () => (
 					<p>
 						<ul>
 							<p>Contáctanos</p>
-							<p>Acerca de Petbnb</p>
+							<p>Acerca de PetbnbCR</p>
 							<p>Nuestras redes sociales</p>
 							<div>
-								<Link>
+								<a href="https://www.instagram.com" alt="https://www.instagram.com">
 									<i className="fab fa-instagram" />
-								</Link>
+								</a>
 								<br />
-								<Link>
+								<a href="https://www.facebook.com" alt="https://www.facebook.com">
 									<i className="fab fa-facebook" />
-								</Link>
+								</a>
 								<br />
-								<Link>
+								<a href="https://www.twitter.com" alt="https://www.twitter.com">
 									<i className="fab fa-twitter-square" />
-								</Link>
+								</a>
 								<br />
 							</div>
 						</ul>

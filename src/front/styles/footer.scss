@@ -1,15 +1,23 @@
 .footer{
     width: 100%;
     height: 40vh;
+    color: white;
     background-color: #de681f;
-    margin: center;
+    margin: auto;
+    margin-bottom: 0;
 }
 ul p{
+    display: inline-block;
+    font-size: 36px;
     text-align: center;
-    margin: auto;
+    margin: 25px;
     padding: 5px;
 }
-ul p div{
-    display: inline-block;
-    font-size: 24px;
+ul div{
+    display: inline-flex;
+    font-size: 30px;
+    margin: 10px;
+}
+ul i{
+    margin: 10px;
 }

@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
-//import Logo from "../../img/btnpetbuddiesLogo.png";
-//img={(src = { Logo })}
+import logo from "../../img/btnpetbnbLogo.png";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar mb-3" style={{ backgroundColor: "transparent" }}>
+		<nav className="navbar mb-3 d-fixed" style={{ backgroundColor: "transparent" }}>
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">Pet Buddy</span>
+				{/* <span className="navbar-brand mb-0 h1">PetbnbCR</span> */}
+				<img src={logo} />
 			</Link>
 			<div className="ml-auto" style={{ display: "inline-flex" }}>
 				<Link to="/register">

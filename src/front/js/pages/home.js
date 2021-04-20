@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
-import { Jumbotron, Button, Carousel, ButtonGroup } from "react-bootstrap";
+import { Jumbotron, Carousel } from "react-bootstrap";
+import SectionTab from "../component/sectionTab";
+import Info from "../component/info";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +19,7 @@ export const Home = () => {
 							src="http://www.petsworld.in/blog/wp-content/uploads/2014/11/Dog-and-Cat.jpg"
 							alt="First slide"
 						/>
-						<Carousel.Caption>
+						<Carousel.Caption style={{ fontSize: "30px" }}>
 							<h3>Ellos son parte de tu familia!</h3>
 							<p>Queremos que ellos sientan tu amor y cuidado</p>
 						</Carousel.Caption>
@@ -28,7 +30,7 @@ export const Home = () => {
 							src="https://i.ytimg.com/vi/LFFNoyfjaMQ/maxresdefault.jpg"
 							alt="Second slide"
 						/>
-						<Carousel.Caption>
+						<Carousel.Caption style={{ fontSize: "30px" }}>
 							<h3>Convierte tu amor por las mascotas en un ingreso extra!</h3>
 							<p>Gana dinero por dedicarle tiempo a las mascotas de tu preferencia</p>
 						</Carousel.Caption>
@@ -39,43 +41,28 @@ export const Home = () => {
 							src="https://img5.goodfon.com/wallpaper/nbig/3/b8/koshki-sobaki-rozovyi-fon-druzia-kompaniia-kot-koshka-sobaka.jpg"
 							alt="Third slide"
 						/>
-						<Carousel.Caption style={{ color: "black" }}>
+						<Carousel.Caption style={{ color: "black", fontSize: "30px", textShadow: "2px 0 5px white" }}>
 							<h3>Únete a nuestra familia</h3>
 							<p>Registrate para brindar tus servicios a los amantes de las mascotas</p>
 						</Carousel.Caption>
 					</Carousel.Item>
 				</Carousel>
 			</div>
+
 			<div className="jumboHome">
 				<Jumbotron>
 					<h1>Cómo funciona?</h1>
-					<p>
+					<h2>
 						Inicialmente, si eres amante de las mascotas caseras pero no tienes el tiempo para darles el
 						cuidado apropiado así como ellos lo merecen, puedes registrarte para obtener el servicio de
-						nuestros Pet Buddies que se harán cargo de tu mascota y según lo desees, brindarle todos los
-						mimos.
-					</p>
-					<div>
-						<ButtonGroup>
-							<Button variant="transparent" style={{ padding: "10px" }}>
-								Dueño
-							</Button>
-
-							<Button variant="transparent" style={{ padding: "10px" }}>
-								Buddy
-							</Button>
-						</ButtonGroup>
-					</div>
+						nuestros Pet Buddies que se harán cargo de tu mascota y según lo desees, brindarle todas las
+						atenciones que quieras.
+					</h2>
+					<br />
 				</Jumbotron>
 			</div>
-			<div className="middleImg">
-				<div>
-					<h1>Hola soy middleImg</h1>
-				</div>
-			</div>
-			<div>
-				<p />
-			</div>
+			<SectionTab />
+			<Info />
 		</div>
 	);
 };
