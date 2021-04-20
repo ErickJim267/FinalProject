@@ -24,26 +24,68 @@ const SectionTab = () => {
 				</Col>
 			</Row>
 			<Row>
-				<Col md={2}>
+				<Col md={6}>
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
-							<div>
-								<p>1. Crear tu perfil</p>
-								<img src={owner1} />
-								<p>2. Establece la disponibilidad</p>
-								<img src={owner2} />
-								<p>3. Comunícate con los Buddies</p>
-								<img src={owner3} />
+							<div className="cardData">
+								<div>
+									<div className="card">
+										<p>1. Crear tu perfil</p>
+									</div>
+									<br />
+									<div>
+										<img src={owner1} />
+									</div>
+								</div>
+								<div>
+									<div className="card">
+										<p>2. Establece la disponibilidad</p>
+										<br />
+									</div>
+									<div>
+										<img src={owner2} />
+									</div>
+								</div>
+								<div>
+									<div className="card">
+										<p>3. Comunícate con los Buddies</p>
+										<br />
+									</div>
+									<div>
+										<img src={owner3} />
+									</div>
+								</div>
 							</div>
 						</Tab.Pane>
-						<Tab.Pane eventKey="second" variety="transparent">
-							<div>
-								<p>1. Indica tu sitio</p>
-								<img src={buddy1} />
-								<p>2. Crear tu perfil</p>
-								<img src={buddy2} />
-								<p>3. Comunícate con los Dueños</p>
-								<img src={buddy3} />
+						<Tab.Pane eventKey="second">
+							<div className="cardData">
+								<div>
+									<div className="card">
+										<p>1. Indica tu sitio</p>
+									</div>
+									<br />
+									<div>
+										<img src={buddy1} />
+									</div>
+								</div>
+								<div>
+									<div className="card">
+										<p>2. Crear tu perfil</p>
+									</div>
+									<br />
+									<div>
+										<img src={buddy2} />
+									</div>
+								</div>
+								<div>
+									<div className="card">
+										<p>3. Comunícate con los Dueños</p>
+									</div>
+									<br />
+									<div>
+										<img src={buddy3} />
+									</div>
+								</div>
 							</div>
 						</Tab.Pane>
 					</Tab.Content>
