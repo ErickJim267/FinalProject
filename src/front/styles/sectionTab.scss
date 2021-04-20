@@ -2,11 +2,12 @@ body{
     background-color: #CADCE4;
     height: 10vh;
     font-size: 25px;
+    width: 100%;
 }
 .cardData{
-    width: 1300px;
+    width: 1100px;
     height: 50;
-    margin: 10px;
+    margin: 0px;
     display: flex;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
@@ -20,4 +21,7 @@ body{
     margin: auto;
     text-align: center;
     border: none;
+}
+.colCont{
+    margin: auto;
 }

@@ -7,18 +7,23 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar mb-3 d-fixed" style={{ backgroundColor: "transparent" }}>
 			<Link to="/">
-				{/* <span className="navbar-brand mb-0 h1">PetbnbCR</span> */}
-				<img src={logo} />
+				<img className="logo" src={logo} />
 			</Link>
 			<div className="ml-auto" style={{ display: "inline-flex" }}>
+				<Link to="">
+					<button className="searchBtn" variant="transparent">
+						Search
+						<i className="fas fa-search" />
+					</button>
+				</Link>
 				<Link to="/register">
-					<button className="btn btn-primary" style={{ margin: "10px" }}>
+					<button className="btn btn-primary" style={{ margin: "10px", backgroundColor: "#DE681F" }}>
 						Register
 					</button>
 				</Link>
 				<br />
 				<Link to="/signin">
-					<button className="btn btn-primary" style={{ margin: "10px" }}>
+					<button className="btn btn-primary" style={{ margin: "10px", backgroundColor: "#DE681F" }}>
 						Sign In
 					</button>
 				</Link>
