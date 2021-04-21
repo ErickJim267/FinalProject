@@ -44,7 +44,7 @@ export function Resetpassword() {
 							</Form.Group>
 
 							<small className="text-muted">
-								You will receive your password in your register
+								You will receive your password in your registed
 								mailbox
 							</small>
 							<br />
