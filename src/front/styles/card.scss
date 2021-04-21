@@ -1,6 +1,6 @@
-.card {
-    font-size: 14px;
-}
+@import 'variables';
+
+.card { font-size: 14px; }
 
 .card-img-profile {
     height: 80px;
@@ -9,15 +9,13 @@
 
 .card-name,
 .card-price span{
-    color: #de681f;
+    color: $orange-primary;
 }
 
-.card-text {
-    font-size: 13.5px;
-}
+.card-text { font-size: 13.5px; }
 
 .card-available {
-    background-color: #FAECD6;
+    background-color: $bg-available;
 }
 
 .card-review {
