@@ -1,31 +1,36 @@
 import React from "react";
+
 import "../../styles/card.scss";
 
 const Card = () => {
 	return (
 		<div className="card">
 			<div className="card-body py-2 px-2">
-				<div className="card-features d-flex justify-content-between">
-					<img src="" alt="" />
+				<div className="card-features d-flex">
+					<img
+						className="img-fluid card-img-profile mr-2"
+						src="https://via.placeholder.com/80"
+						alt="img-profile"
+					/>
 					<div className="card-info">
-						<h5 className="card-name font-weight-bold">Jean Smith</h5>
-						<h6 className="card-description">
-							<strong>Amante de las mascotas por siempre</strong>
+						<h6 className="card-name font-weight-bold">Jean Smith</h6>
+						<div className="card-description">
+							<p className="card-text font-weight-bold m-0">Amante de las mascotas</p>
 							<span className="card-address d-block text-muted">
 								<small>2.5 Km - San Pedro</small>
 							</span>
-						</h6>
+						</div>
 						<div className="card-rating">
 							<span className="icon-rating mr-2">*****</span>
 							15 Reseñas
 						</div>
 					</div>
-					<div className="card-price ml-5 text-center">
+					<div className="card-price text-center ml-auto">
 						<small>
-							Desde <span className="d-block">USD 15</span>
+							Desde <span className="d-block font-weight-bold">USD 15</span>
 						</small>
 					</div>
-				</div>{" "}
+				</div>
 				{/* .card-features */}
 				<div className="card-comment">
 					<div className="card-review">

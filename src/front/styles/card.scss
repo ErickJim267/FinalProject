@@ -1,7 +1,19 @@
+.card {
+    font-size: 14px;
+}
+
+.card-img-profile {
+    height: 80px;
+    width: 80px;
+}
 
 .card-name,
 .card-price span{
     color: #de681f;
+}
+
+.card-text {
+    font-size: 13.5px;
 }
 
 .card-available {
