@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 
-export function Login() {
+export function Resetpassword() {
 	const [validated, setValidated] = useState(false);
 
 	const handleSubmit = event => {
@@ -21,60 +21,43 @@ export function Login() {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						
-						<h1>Log In</h1>
+						<h1>Reset Password</h1>
 					</Card.Title>
 
 					<br />
 
 					<div>
-						<Form
-							noValidate
-							validated={validated}
-							onSubmit={handleSubmit}>
+						<Form noValidate validated={validated} onSubmit={handleSubmit}>
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Email address</Form.Label>
-								<Form.Control
-									required
-									type="email"
-									placeholder="Enter email"
-								/>
-								<Form.Text className="text-muted"></Form.Text>
+								<Form.Control required type="email" placeholder="Enter email" />
+								<Form.Text className="text-muted" />
 							</Form.Group>
+
+							<small className="text-muted">
+								You will receive your password in your registed mailbox
+							</small>
+							<br />
 
 							<br />
 
-							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Password</Form.Label>
-								<Form.Control
-									required
-									type="password"
-									placeholder="Password"
-								/>
-							</Form.Group>
-
-							<br />
-
-							<Button
-								variant="primary"
-								type="submit"
-								style={{ backgroundColor: "#de681f" }}>
-								Login
+							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
+								Reset password
 							</Button>
 						</Form>
 
 						<br />
 
-						<small className="text-muted">Forgot password?</small>
+						<small className="text-muted">Back to Home</small>
 					</div>
 				</Card.Body>
 			</Card>
 			<Card>
 				<Card.Img
 					variant="center"
-					src="https://www.doggypark.com.co/wp-content/uploads/2020/10/Pastor-Caucasico2.jpg"
+					src="https://www.elrancaguino.cl/wp-content/uploads/2019/02/perro-y-gato.jpg"
 					thumbnail
 				/>
 			</Card>

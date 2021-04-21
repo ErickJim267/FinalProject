@@ -27,23 +27,14 @@ export function Register() {
 					<br />
 
 					<div>
-						<Form
-							noValidate
-							validated={validated}
-							onSubmit={handleSubmit}>
+						<Form noValidate validated={validated} onSubmit={handleSubmit}>
 							<div>
 								<h5> Type of user </h5>
 								<br />
-								<Button
-									variant="primary"
-									size="sm"
-									onClick={focus}>
+								<Button variant="primary" size="sm" onClick={focus}>
 									user
 								</Button>{" "}
-								<Button
-									variant="secondary"
-									size="sm"
-									onClick={focus}>
+								<Button variant="secondary" size="sm" onClick={focus}>
 									buddy
 								</Button>
 							</div>
@@ -52,74 +43,49 @@ export function Register() {
 
 							<Form.Group controlId="validationCustom01">
 								<Form.Label>Name</Form.Label>
-								<Form.Control
-									required
-									type="name"
-									placeholder="Enter name"
-								/>
+								<Form.Control required type="name" placeholder="Enter name" />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="formBasiclastname">
 								<Form.Label>Last Name</Form.Label>
-								<Form.Control
-									required
-									type="lastname"
-									placeholder="Enter lastname"
-								/>
-								<Form.Text className="text-muted"></Form.Text>
+								<Form.Control required type="lastname" placeholder="Enter lastname" />
+								<Form.Text className="text-muted" />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Email address</Form.Label>
-								<Form.Control
-									required
-									type="email"
-									placeholder="Enter email"
-								/>
-								<Form.Text className="text-muted"></Form.Text>
+								<Form.Control required type="email" placeholder="Enter email" />
+								<Form.Text className="text-muted" />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control
-									required
-									type="password"
-									placeholder="Password"
-								/>
+								<Form.Control required type="password" placeholder="Password" />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="formBasicconfirmpassword">
 								<Form.Label>Confirm Password</Form.Label>
-								<Form.Control
-									required
-									type="confirmpassword"
-									placeholder="Confirm Password"
-								/>
+								<Form.Control required type="confirmpassword" placeholder="Confirm Password" />
 							</Form.Group>
 
 							<br />
 
-							<Button
-								variant="primary"
-								type="submit"
-								style={{ backgroundColor: "#de681f" }}>
+							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
 								Submit
 							</Button>
 						</Form>
 
 						<br />
 
-						<small className="text-muted">
-							Have already accont?
-						</small>
+						<small className="text-muted">Have already accont?</small>
 					</div>
 				</Card.Body>
 			</Card>
