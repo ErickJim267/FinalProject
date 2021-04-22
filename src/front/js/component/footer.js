@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../styles/footer.scss";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 export const Footer = () => (
 	<div>

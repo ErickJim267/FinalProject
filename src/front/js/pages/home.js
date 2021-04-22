@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
-import { Jumbotron, Carousel } from "react-bootstrap";
+import { Jumbotron, Carousel, Form, Col, Link, Button } from "react-bootstrap";
 import SectionTab from "../component/sectionTab";
 import Info from "../component/info";
 
@@ -11,7 +11,6 @@ export const Home = () => {
 	return (
 		<div>
 			<div>
-				<div id="imgHomeContainer" />
 				<Carousel fade>
 					<Carousel.Item>
 						<img
@@ -48,15 +47,43 @@ export const Home = () => {
 					</Carousel.Item>
 				</Carousel>
 			</div>
+			<Form>
+				<Form>
+					<Form.Row>
+						<Form.Group as={Col} controlId="formGridState">
+							<Form.Label>Busco</Form.Label>
+							<Form.Control as="select" defaultValue="Choose...">
+								<option>Paseos</option>
+								<option>Hospedaje</option>
+							</Form.Control>
+						</Form.Group>
 
+						<Form.Group as={Col} controlId="formGridState">
+							<Form.Label>En</Form.Label>
+							<Form.Control as="select" defaultValue="Choose...">
+								<option>San José</option>
+								<option>Heredia</option>
+								<option>Alajuela</option>
+								<option>Guanacaste</option>
+								<option>Cartago</option>
+								<option>Puntarenas</option>
+								<option>Limón</option>
+							</Form.Control>
+						</Form.Group>
+					</Form.Row>
+					<Button variant="primary" type="submit">
+						Buscar
+						<i className="fas fa-search" />
+					</Button>
+				</Form>
+			</Form>
 			<div className="jumboHome">
 				<Jumbotron>
 					<h1>Cómo funciona?</h1>
 					<h2>
-						Inicialmente, si eres amante de las mascotas caseras pero no tienes el tiempo para darles el
-						cuidado apropiado así como ellos lo merecen, puedes registrarte para obtener el servicio de
-						nuestros Pet Buddies que se harán cargo de tu mascota y según lo desees, brindarle todas las
-						atenciones que quieras.
+						Si eres amante de las mascotas pero no tienes el tiempo para dedicarles, puedes registrarte para
+						obtener el servicio de nuestros Pet Buddies que se harán cargo de tu mascota y según lo desees,
+						brindarle todas las atenciones que quieras.
 					</h2>
 					<br />
 				</Jumbotron>
