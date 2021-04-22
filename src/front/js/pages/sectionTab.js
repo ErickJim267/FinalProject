@@ -12,7 +12,7 @@ const SectionTab = () => {
 	return (
 		<Tab.Container id="left-tabs-example" defaultActiveKey="first">
 			<Row>
-				<Col md={11} className="offset-4">
+				<Col md={4} className="offset-4" style={{textAlign: "center"}}>
 					<Nav variant="pills" className="flex-row">
 						<Nav.Item>
 							<Nav.Link eventKey="first">Dueño</Nav.Link>
@@ -23,9 +23,8 @@ const SectionTab = () => {
 					</Nav>
 				</Col>
 			</Row>
-
 			<Row>
-				<Col md={11}>
+				<Col md={6}>
 					<Tab.Content>
 						<Tab.Pane eventKey="first">
 							<div className="cardData">
@@ -66,7 +65,7 @@ const SectionTab = () => {
 									</div>
 									<br />
 									<div>
-										<img className="img-fluid" src={buddy1} />
+										<img src={buddy1} />
 									</div>
 								</div>
 								<div>

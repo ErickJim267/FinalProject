@@ -5,7 +5,7 @@ const Info = () => {
 	return (
 		<div className="middleImg">
 			<Row>
-				<Col>
+				<Col md={12}>
 					<div>
 						<p>
 							<h2>Dueños:</h2>
