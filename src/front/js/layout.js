@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
-//import { Demo } from "./pages/demo";
-//import { Single } from "./pages/single";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { Resetpassword } from "./pages/resetpassword";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
-//import { SectionTab } from "./component/sectionTab";
-//import { Info } from "./component/info";
+
+import { SectionTab } from "./pages/sectionTab";
+//import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 
 const Layout = () => {
@@ -24,27 +24,17 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						{/*Acá crearemos las rutas para los formularios Register y Login
-                        <Route exact path = "/register"
-                            <Register />
-                        </Route>
-                        <Route exact path = "/login"
-                            <Login />
-                        </Route>
-                         <Route exact path="/demo">
-							<Demo />
+						<Route exact path="/login">
+							<Login />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route> 
-						<Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/reset-password">
+							<Resetpassword />
+						</Route>
+						<Route exact path="/sectionTab">
 							<SectionTab />
-						</Route>
-						<Route>
-							<Info />
-						</Route>*/}
-						<Route>
-							<h1>Not found!</h1>
 						</Route>
 					</Switch>
 					<Footer />

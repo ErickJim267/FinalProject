@@ -16,9 +16,9 @@ export const Navbar = () => {
 					</button>
 				</Link>
 				<br />
-				<Link to="/signin">
+				<Link to="/login">
 					<button className="btnNav" style={{ margin: "10px" }}>
-						Sign In
+						Login
 					</button>
 				</Link>
 			</div>

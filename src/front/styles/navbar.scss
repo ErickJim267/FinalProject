@@ -19,13 +19,11 @@
     -webkit-transition: top 200ms;
     transition: top 300ms;
 }
-
 .navbar .logo{
     border-radius: 15px;
     border: 3px solid black;
     height: 50px;
 }
-
 .navbar i {
     font-size: medium;
     margin: auto;
@@ -34,11 +32,11 @@
     width: 90px;
     
 }
-
-
 .btnNav{
     background-color: #de681f;
     border-radius: 10px;
+    border: 1px solid #de681f;
+    color: white;
     font-size: 19px;
     padding: 5px 15px;
 }
