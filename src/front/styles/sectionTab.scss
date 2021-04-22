@@ -2,6 +2,8 @@ body{
     background-color: #CADCE4;
     height: 10vh;
     font-size: 25px;
+    //text-align: center;
+    overflow-x: hidden;
 }
 .cardData{
     width: 1300px;
@@ -13,7 +15,7 @@ body{
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 10px 0;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 .card{
     background-color: #CADCE4;
