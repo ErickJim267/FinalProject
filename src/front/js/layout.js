@@ -5,7 +5,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Home } from "./pages/home";
 import { Footer } from "./component/footer";
-import { OwnerView } from "./pages/ownerview";
+import { Owner_profile } from "./pages/owner_profile";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -16,8 +16,8 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route path="/ownerview">
-							<OwnerView />
+						<Route exact path="/owner_profile">
+							<Owner_profile />
 						</Route>
 						<Route exact path="/">
 							<Home />

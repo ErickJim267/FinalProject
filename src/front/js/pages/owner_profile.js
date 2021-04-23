@@ -1,8 +1,8 @@
 import React from "react";
-import { Row, Col, Card, Button, CardDeck } from "react-bootstrap";
-import "../../styles/ownerview.scss";
+import { Row, Col, Card, CardDeck } from "react-bootstrap";
+import "../../styles/owner_profile.scss";
 
-export const OwnerView = () => {
+export const Owner_profile = () => {
 	return (
 		<>
 			<div>
@@ -44,7 +44,7 @@ export const OwnerView = () => {
 				{/*Inicia segundo Row para otras fotos y detalles de verificación*/}
 				<Row>
 					<Col md={12}>
-						<div>
+						<div className="cardDeck">
 							<CardDeck>
 								<Card>
 									<Card.Img
