@@ -10,7 +10,7 @@ export const Navbar = () => {
 				<img className="logo" src={logo} />
 			</Link>
 			<div className="ml-auto" style={{ display: "inline-flex" }}>
-				<Link to="">
+				<Link to="/ownerview">
 					<button className="searchBtn" variant="transparent">
 						Search
 						<i className="fas fa-search" />

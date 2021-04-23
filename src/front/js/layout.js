@@ -1,16 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
-import { Home } from "./pages/home";
-//import { Demo } from "./pages/demo";
-//import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
-//import { SectionTab } from "./component/sectionTab";
-//import { Info } from "./component/info";
+import { Home } from "./pages/home";
 import { Footer } from "./component/footer";
+import { OwnerView } from "./pages/ownerview";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -21,6 +16,9 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
+						<Route path="/ownerview">
+							<OwnerView />
+						</Route>
 						<Route exact path="/">
 							<Home />
 						</Route>
