@@ -21,8 +21,11 @@ const Card = () => {
 							</span>
 						</div>
 						<div className="card-rating">
-							<span className="icon-rating mr-2">*****</span>
-							15 Reseñas
+							<span>★</span>
+							<span>★</span>
+							<span>★</span>
+							<span>★</span>
+							<span>☆</span> 15 Reseñas
 						</div>
 					</div>
 					<div className="card-price text-center ml-auto">
