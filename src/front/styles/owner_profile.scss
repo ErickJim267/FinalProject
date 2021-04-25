@@ -1,3 +1,8 @@
+.profileCont{
+    width: 100%;
+    height: 2500px;
+}
+
 .imgContainer{
     margin: "auto";
     height: "30px";
@@ -9,4 +14,6 @@
 .cardDeck{
     width: 100%;
     margin-top: 0px;
+    padding-top: 0px;
+    display: "inline-flexbox";
 }
