@@ -4,7 +4,9 @@ import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 
 export function Register() {
-	const [validated, setValidated] = useState(false);
+	const [validated, setValidated] = useState(false);+
+
+	// const[rol, setRol] = useState("");
 
 	const handleSubmit = event => {
 		const form = event.currentTarget;
@@ -32,10 +34,10 @@ export function Register() {
 								<h5> Type of user </h5>
 								<br />
 								<Button variant="primary" size="sm" onClick={focus} value="owner">
-									user
-								</Button>{" "}
+									OWNER
+								</Button>
 								<Button variant="secondary" size="sm" onClick={focus} value="buddy">
-									buddy
+									BUDDY
 								</Button>
 							</div>
 
