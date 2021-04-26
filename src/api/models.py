@@ -107,7 +107,7 @@ class Comment(db.Model):
     count_rating= db.Column(db.Integer)
     id_buddy = db.Column(db.Integer, db.ForeignKey ('buddy.id'))
     id_owner = db.Column(db.Integer, db.ForeignKey ('owner.id'))
-    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    created_at = db.Column(db.Datetime, default=datetime.datetime.now())
 
     def __repr__(self):
         return '<Comment %r>' % self.id

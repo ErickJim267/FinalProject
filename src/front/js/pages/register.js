@@ -31,10 +31,10 @@ export function Register() {
 							<div>
 								<h5> Type of user </h5>
 								<br />
-								<Button variant="primary" size="sm" onClick={focus}>
+								<Button variant="primary" size="sm" onClick={focus} value="owner">
 									user
 								</Button>{" "}
-								<Button variant="secondary" size="sm" onClick={focus}>
+								<Button variant="secondary" size="sm" onClick={focus} value="buddy">
 									buddy
 								</Button>
 							</div>
