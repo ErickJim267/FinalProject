@@ -143,12 +143,8 @@ class Comment(db.Model):
     count_rating= db.Column(db.Integer)
     id_buddy = db.Column(db.Integer, db.ForeignKey ('buddy.id'))
     id_owner = db.Column(db.Integer, db.ForeignKey ('owner.id'))
-<<<<<<< HEAD
-    created_at = db.Column(db.Datetime, default=datetime.datetime.now())
-=======
     #un owner puede hacer varios comentarios, pero 1 comentario le pertenece a un mismo owner
     #un buddy tiene muchos comentarios, pero un buddy sólo le pertenece 1 comentario
->>>>>>> ae3ba53a4f72dabaf2a6a6acb7871eda1fc160ae
 
     def __repr__(self):
         return '<Comment %r>' % self.id
