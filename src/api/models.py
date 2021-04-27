@@ -1,26 +1,22 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import safe_str_cmp  
-#import datetime
 
 db = SQLAlchemy()
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = "user"
+
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), unique=False, nullable=False)
-    last_name = db.Column(db.String(30), unique=False, nullable=False)
-    birth_date = db.Column(db.String(20), nullable=False)
-    email = db.Column(db.String(30), unique=True, nullable=False)
-    password = db.Column(db.String(30), nullable=False)
-    phone = db.Column(db.Integer, unique=False, nullable=True)
-    user_role = db.Column(db.Integer, unique=False, nullable=False)
-    is_active = db.Column(db.Boolean, nullable=False)
-    profile_photo = db.Column(db.String(100), nullable = False)
-    about_me_short = db.Column(db.String(80), nullable = False)
-    about_me_long = db.Column(db.Text, nullable = False)
-    addresses = db.relationship('Address', backref='user', lazy=True)
-    buddy = db.relationship("Buddy", backref="user", uselist = False)
-    owner = db.relationship("Owner", backref="user", uselist = False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    user_name = db.Column(db.String(50), unique = True, nullable = False)
+    name = db.Column(db.String(20), unique = False, nullable = False)
+    last_name = db.Column(db.String(20), unique = False, nullable = False)
+    id_adress = db.Column(db.String(30), unique = False, nullable = False)
+    phone = db.Column(db.Integer, unique = True, nullable = False)
+    birth_date = db.Column(db.Date, unique = False, nullable = False)
+    user_rol = db.Column(db.Integer, unique = False, nullable = False)
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
         return '<User %r>' % self.username

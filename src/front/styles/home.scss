@@ -27,8 +27,19 @@
     color: white;
 }
 
-.menuFloat{
-    background-color: #de681f;
-    width: 300px;
+.searchForm{
+    background-color: #CADCE4;
+    width: 75%;
     height: 200px;
+    margin: auto;
+    margin-top: 20px;
 }
+.btnSearch{
+    text-align: right;
+    margin: 3px;
+    
+}
+.btnSearch i {
+    margin: 5px;
+}
+

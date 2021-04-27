@@ -7,9 +7,7 @@ from api.models import db, User, Owner, Buddy
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
-
 api = Blueprint('api', __name__)
-
 
 @jwt.user_identity_loader
 def user_identity_lookup(user):
@@ -63,8 +61,10 @@ def register():
         
         return jsonify({"msg" : "User added successfully!"}), 200
 
-@api.route('/login', methods=['POST'])
-def login():
+# Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT.
+@api.route("/token", methods=["POST"])
+def create_token():
     password = request.json.get('password', None)
     email = request.json.get('email', None)
 
@@ -82,3 +82,26 @@ def login():
         # create a new token with user_id
         access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
+
+#############################################################################
+###########  Esto se creó para las rutas de los componentes  ################
+#############################################################################
+
+@api.route('/register', methods=['POST', 'GET'])
+def handle_register():
+
+    response_body = {
+        "message": "Hello! I'm the register"
+    }
+
+    return jsonify(response_body), 200
+
+@api.route('/login', methods=['POST', 'GET'])
+def handle_login():
+
+    response_body = {
+        "message": "Hello! I'm the login"
+    }
+
+    return jsonify(response_body), 200
+
