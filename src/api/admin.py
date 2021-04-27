@@ -1,11 +1,7 @@
   
 import os
 from flask_admin import Admin
-<<<<<<< HEAD
-from .models import db, User, Owner, Buddy, Address, Comment, Pet
-=======
 from .models import db, User, Owner, Buddy, Address, Comment
->>>>>>> test
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -20,10 +16,6 @@ def setup_admin(app):
     admin.add_view(ModelView(Buddy, db.session))
     admin.add_view(ModelView(Address, db.session))
     admin.add_view(ModelView(Comment, db.session))
-<<<<<<< HEAD
-    admin.add_view(ModelView(Pet, db.session))
-=======
->>>>>>> test
 
 #
 #
