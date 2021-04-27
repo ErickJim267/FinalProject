@@ -1,13 +1,5 @@
-import os
-import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Date, Boolean
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
-from sqlalchemy import create_engine
-#from eralchemy import render_er
 from flask_sqlalchemy import SQLAlchemy
-
-Base = declarative_base()
+from werkzeug.security import safe_str_cmp 
 
 db = SQLAlchemy()
 
