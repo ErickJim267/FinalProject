@@ -18,7 +18,10 @@ gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
+<<<<<<< HEAD
 datetime = "*"
+=======
+>>>>>>> test
 
 [requires]
 python_version = "3.8"

@@ -2,8 +2,14 @@ import React from "react";
 //import { Context } from "../store/appContext";, { useContext }
 import "../../styles/home.scss";
 import { Jumbotron, Carousel, Form, Col, Button } from "react-bootstrap";
+<<<<<<< HEAD
 import SectionTab from "./sectionTab";
 import Info from "./info";
+=======
+import { Link } from "react-router-dom";
+import SectionTab from "../component/sectionTab";
+import Info from "../component/info";
+>>>>>>> test
 
 export const Home = () => {
 	//const { store, actions } = useContext(Context);
@@ -48,7 +54,7 @@ export const Home = () => {
 				</Carousel>
 			</div>
 			<Form>
-				<Form>
+				<Form className="searchForm">
 					<Form.Row>
 						<Form.Group as={Col} controlId="formGridState">
 							<Form.Label>Busco</Form.Label>
@@ -71,10 +77,14 @@ export const Home = () => {
 							</Form.Control>
 						</Form.Group>
 					</Form.Row>
-					<Button variant="primary" type="submit">
-						Buscar
-						<i className="fas fa-search" />
-					</Button>
+					<div>
+						<Link to="/search">
+							<Button className="btnSearch" variant="primary" type="submit">
+								Buscar
+								<i className="fas fa-search" />
+							</Button>
+						</Link>
+					</div>
 				</Form>
 			</Form>
 			<div className="jumboHome">

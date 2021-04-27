@@ -10,6 +10,7 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
+from flask_jwt_extended import JWTManager
 #from models import Person
 from flask_jwt_extended import JWTManager
 
@@ -18,6 +19,9 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config["JWT_SECRET_KEY"] = os.environ.get('FLASK_APP_KEY', 'sample key')
+jwt = JWTManager(app)
+
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET', 'sample key') #Change this
 jwt = JWTManager(app)
 
 # database condiguration
@@ -47,6 +51,18 @@ def handle_invalid_usage(error):
 # generate sitemap with all your endpoints
 @app.route('/')
 def sitemap():
+    if ENV == "development":
+        return generate_sitemap(app)
+    return send_from_directory(static_file_dir, 'index.html')
+
+@app.route('/login')
+def sitemapA():
+    if ENV == "development":
+        return generate_sitemap(app)
+    return send_from_directory(static_file_dir, 'index.html')
+
+@app.route('/register')
+def sitemapB():
     if ENV == "development":
         return generate_sitemap(app)
     return send_from_directory(static_file_dir, 'index.html')
