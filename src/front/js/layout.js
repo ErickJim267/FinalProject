@@ -1,21 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { Resetpassword } from "./pages/resetpassword";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-import Search from "./pages/search";
-import ProfileBuddyView from "./pages/profileBuddyView";
 
-//create your first component
+import { SectionTab } from "./pages/sectionTab";
+//import { Info } from "./pages/info";
+import { Footer } from "./component/footer";
+import { Dashboard } from "./pages/dashboard";
+
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
 	return (
@@ -27,17 +25,17 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/login">
+							<Login />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/register">
+							<Register />
 						</Route>
-						<Route exact path="/search">
-							<Search />
+						<Route exact path="/reset-password">
+							<Resetpassword />
 						</Route>
-						<Route exact path="/profile-buddy">
-							<ProfileBuddyView />
+						<Route exact path="/dashboard">
+							<Dashboard />
 						</Route>
 					</Switch>
 					<Footer />
