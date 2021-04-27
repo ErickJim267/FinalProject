@@ -7,8 +7,6 @@ import { Register } from "./pages/register";
 import { Resetpassword } from "./pages/resetpassword";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
-
-import { SectionTab } from "./pages/sectionTab";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
