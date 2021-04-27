@@ -5,15 +5,12 @@ import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Owner, Buddy
 from api.utils import generate_sitemap, APIException
-<<<<<<< HEAD
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
-=======
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 import os
->>>>>>> test
 
 api = Blueprint('api', __name__)
 
@@ -60,7 +57,6 @@ def register():
         
         return jsonify({"msg" : "User added successfully!"}), 200
 
-<<<<<<< HEAD
 @api.route('/login', methods=['POST'])
 def signin():
     password = request.json.get('password', None)
@@ -80,7 +76,6 @@ def signin():
         # create a new token with user_id
         access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
-=======
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/token", methods=["POST"])
@@ -92,8 +87,6 @@ def create_token():
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
-
-
 
 #############################################################################
 ######### Esto se creó para las rutas de los componentes     ################
@@ -117,4 +110,3 @@ def handle_login():
 
     return jsonify(response_body), 200
 
->>>>>>> test
