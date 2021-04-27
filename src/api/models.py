@@ -7,13 +7,13 @@ class User(db.Model):
     __tablename__ = "user"
   
     # se corrigieron algunos campos
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(255), primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(20), nullable = False)
     last_name = db.Column(db.String(20), nullable = False)
     phone = db.Column(db.Integer, nullable = True)
-    birth_date = db.Column(db.Date, nullable = True)
+    birth_date = db.Column(db.String(30), nullable = True)
     user_role = db.Column(db.String(10), nullable = False)
     is_active = db.Column(db.Boolean(), nullable=False)
     profile_photo = db.Column(db.String(100), nullable=True)
@@ -46,7 +46,7 @@ class User(db.Model):
 class Address(db.Model):
     __tablename__ = 'address'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey ('user.id'), nullable=False)
+    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'), nullable=False)
     exact_address = db.Column(db.String(50), nullable=False)
     provincia = db.Column(db.String(15), nullable=False)
     canton = db.Column(db.String(15), nullable=False)
@@ -67,8 +67,8 @@ class Address(db.Model):
 
 class Owner(db.Model):
     __tablename__ = 'owner'
-    id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey ('user.id'))
+    id = db.Column(db.String(255), primary_key = True)
+    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
     pets = db.relationship('Pet', backref='person', lazy = True)
     comments = db.relationship('Comment', backref = 'owner', lazy = True)
     reservations = db.relationship('Reservation', backref = 'owner', lazy = True)
@@ -84,9 +84,9 @@ class Owner(db.Model):
     
 class Pet(db.Model):
     __tablename__ = 'pet'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(255), primary_key=True)
     pet_name = db.Column(db.String(30),unique=True, nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey('owner.id'), nullable=False)
+    owner_id = db.Column(db.String(255), db.ForeignKey('owner.id'), nullable=False)
     specie = db.Column(db.String(10))
     size = db.Column(db.String(10))
     activity = db.Column(db.String(10))
@@ -118,11 +118,11 @@ class Pet(db.Model):
 
 class Buddy(db.Model):
     __tablename__ = 'buddy'
-    id = db.Column(db.Integer, primary_key=True)
-    service = db.Column(db.String(30))
-    user_id = db.Column(db.ForeignKey ('user.id'))
-    other_skills = db.Column(db.String(100))
-    size_accepted = db.Column(db.String(10))
+    id = db.Column(db.String(255), primary_key=True)
+    service = db.Column(db.String(30), nullable=True)
+    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
+    other_skills = db.Column(db.String(100), nullable=True)
+    size_accepted = db.Column(db.String(10), nullable=True)
     comments = db.relationship('Comment', backref = 'buddy', lazy = True)
     reservations = db.relationship('Reservation', backref = 'buddy', lazy = True)
 
@@ -140,11 +140,11 @@ class Buddy(db.Model):
 
 class Comment(db.Model):
     __tablename__ = 'comment'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(255), primary_key=True)
     comment_body= db.Column(db.Text)
     count_rating= db.Column(db.Integer)
-    id_buddy = db.Column(db.Integer, db.ForeignKey ('buddy.id'))
-    id_owner = db.Column(db.Integer, db.ForeignKey ('owner.id'))
+    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.id'))
+    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.id'))
     #un owner puede hacer varios comentarios, pero 1 comentario le pertenece a un mismo owner
     #un buddy tiene muchos comentarios, pero un buddy sólo le pertenece 1 comentario
 
@@ -162,9 +162,9 @@ class Comment(db.Model):
 
 class Reservation(db.Model):
     __tablename__ = 'reservation'
-    id = db.Column(db.Integer, primary_key = True)
-    id_buddy = db.Column(db.Integer, db.ForeignKey ('buddy.id'))
-    id_owner = db.Column(db.Integer, db.ForeignKey ('owner.id'))
+    id = db.Column(db.String(255), primary_key = True)
+    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.id'))
+    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.id'))
     reservation_date = db.Column(db.String(20))
     reservation_service = db.Column(db.String(10))
     reservation_state = db.Column(db.String(10))

@@ -65,7 +65,7 @@ def user_lookup_callback(_jwt_header, jwt_data):
 
 @app.before_first_request
 def load_data():
-    load_users(User, db)
+    load_users()
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

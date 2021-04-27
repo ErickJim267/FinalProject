@@ -4,7 +4,7 @@ import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 
 export function Register() {
-	const [validated, setValidated] = useState(false);+
+	const [validated, setValidated] = useState(false);
 
 	// const[rol, setRol] = useState("");
 

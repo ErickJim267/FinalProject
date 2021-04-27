@@ -1,5 +1,6 @@
 from flask import jsonify, url_for
 import shortuuid
+from api.models import db, User, Owner, Buddy
 
 class APIException(Exception):
     status_code = 400
@@ -41,7 +42,7 @@ def generate_sitemap(app):
         <p>Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
         
-def load_users(User, db):
+def load_users():
     users = [
         {"email":"jcarrillo@gmail.com", "password":"1234", "name":"jose", "last_name":"carrillo", "user_role":"buddy", "is_active":True},
         {"email":"ejimenez@gmail.com", "password":"1234", "name":"erick", "last_name":"jimenez", "user_role":"owner", "is_active":True},
@@ -51,9 +52,10 @@ def load_users(User, db):
 
     for user in users:
         my_user = User.query.filter_by(email=user['email']).first()
+        _id=shortuuid.uuid()
         if my_user is None:
             new_user = User()
-            new_user.id = shortuuid.uuid()
+            new_user.id = _id
             new_user.email = user['email']
             new_user.password = user['password']
             new_user.name = user['name']
@@ -64,10 +66,10 @@ def load_users(User, db):
             db.session.commit()
             
             if user['user_role'] == 'owner':
-                new_owner = Owner(user_id=new_user.id)    
+                new_owner = Owner(id=shortuuid.uuid(), user_id=_id)    
                 db.session.add(new_owner)
                 db.session.commit()
             else:
-                new_buddy = Buddy(user_id=new_user.id)    
+                new_buddy = Buddy(id=shortuuid.uuid(), user_id=_id)    
                 db.session.add(new_buddy)
                 db.session.commit()
