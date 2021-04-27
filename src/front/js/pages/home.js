@@ -2,14 +2,9 @@ import React from "react";
 //import { Context } from "../store/appContext";, { useContext }
 import "../../styles/home.scss";
 import { Jumbotron, Carousel, Form, Col, Button } from "react-bootstrap";
-<<<<<<< HEAD
+import { Link } from "react-router-dom";
 import SectionTab from "./sectionTab";
 import Info from "./info";
-=======
-import { Link } from "react-router-dom";
-import SectionTab from "../component/sectionTab";
-import Info from "../component/info";
->>>>>>> test
 
 export const Home = () => {
 	//const { store, actions } = useContext(Context);

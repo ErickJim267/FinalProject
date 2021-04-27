@@ -30,7 +30,7 @@ export const Footer = () => (
 						</ul>
 					</p>
 					<p>
-						Made with <i className="fa fa-heart text-danger" /> by Adan, Erick, Jose y Julio
+						Made with <i className="fa fa-heart text-danger" /> by Erick, Jose y Julio
 					</p>
 				</Col>
 			</Row>
