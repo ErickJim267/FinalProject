@@ -1,4 +1,5 @@
 from flask import jsonify, url_for
+import shortuuid
 
 class APIException(Exception):
     status_code = 400
@@ -39,3 +40,34 @@ def generate_sitemap(app):
         <p>Start working on your proyect by following the <a href="https://start.4geeksacademy.com/starters/full-stack" target="_blank">Quick Start</a></p>
         <p>Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
+        
+def load_users(User, db):
+    users = [
+        {"email":"jcarrillo@gmail.com", "password":"1234", "name":"jose", "last_name":"carrillo", "user_role":"buddy", "is_active":True},
+        {"email":"ejimenez@gmail.com", "password":"1234", "name":"erick", "last_name":"jimenez", "user_role":"owner", "is_active":True},
+        {"email":"jvillalobos@gmail.com", "password":"1234", "name":"julio", "last_name":"villalobos", "user_role":"owner", "is_active":True},
+        {"email":"harista@gmail.com", "password":"1234", "name":"hazel", "last_name":"arista", "user_role":"buddy", "is_active":True}
+    ]
+
+    for user in users:
+        my_user = User.query.filter_by(email=user['email']).first()
+        if my_user is None:
+            new_user = User()
+            new_user.id = shortuuid.uuid()
+            new_user.email = user['email']
+            new_user.password = user['password']
+            new_user.name = user['name']
+            new_user.last_name = user['last_name']
+            new_user.user_role = user['user_role']
+            new_user.is_active = user['is_active']
+            db.session.add(new_user)
+            db.session.commit()
+            
+            if user['user_role'] == 'owner':
+                new_owner = Owner(user_id=new_user.id)    
+                db.session.add(new_owner)
+                db.session.commit()
+            else:
+                new_buddy = Buddy(user_id=new_user.id)    
+                db.session.add(new_buddy)
+                db.session.commit()

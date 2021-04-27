@@ -5,17 +5,21 @@ db = SQLAlchemy()
 
 class User(db.Model):
     __tablename__ = "user"
-
+  
+    # se corrigieron algunos campos
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    name = db.Column(db.String(20), unique = False, nullable = False)
-    last_name = db.Column(db.String(20), unique = False, nullable = False)
-    id_address = db.Column(db.String(30), unique = False, nullable = False)
-    phone = db.Column(db.Integer, unique = True, nullable = False)
-    birth_date = db.Column(db.Date, unique = False, nullable = False)
-    user_rol = db.Column(db.Integer, unique = False, nullable = False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    name = db.Column(db.String(20), nullable = False)
+    last_name = db.Column(db.String(20), nullable = False)
+    phone = db.Column(db.Integer, nullable = True)
+    birth_date = db.Column(db.Date, nullable = True)
+    user_role = db.Column(db.String(10), nullable = False)
+    is_active = db.Column(db.Boolean(), nullable=False)
+    profile_photo = db.Column(db.String(100), nullable=True)
+    about_me_short = db.Column(db.String(100), nullable=True)
+    about_me_long = db.Column(db.Text, nullable=True)
+    addresses = db.relationship('Address', backref = 'User', lazy = True)
 
     def __repr__(self):
         return '<User %r>' % self.id
