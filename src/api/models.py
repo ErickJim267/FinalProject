@@ -21,6 +21,9 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+    def check_password(self, password):
+        return safe_str_cmp(password, self.password)
+
     def to_dict(self):
         return {
             "id": self.id,
