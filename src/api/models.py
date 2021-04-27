@@ -9,17 +9,16 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    user_name = db.Column(db.String(50), unique = True, nullable = False)
     name = db.Column(db.String(20), unique = False, nullable = False)
     last_name = db.Column(db.String(20), unique = False, nullable = False)
-    id_adress = db.Column(db.String(30), unique = False, nullable = False)
+    id_address = db.Column(db.String(30), unique = False, nullable = False)
     phone = db.Column(db.Integer, unique = True, nullable = False)
     birth_date = db.Column(db.Date, unique = False, nullable = False)
     user_rol = db.Column(db.Integer, unique = False, nullable = False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.id
 
     def check_password(self, password):
         return safe_str_cmp(password, self.password)
@@ -75,6 +74,7 @@ class Owner(db.Model):
     
     def to_dict(self):
         return {
+            "id": self.id,
             "user_id": self.user_id
         }
     
@@ -117,7 +117,6 @@ class Buddy(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     service = db.Column(db.String(30))
     user_id = db.Column(db.ForeignKey ('user.id'))
-    #comment_id = db.Column(db.Integer, db.ForeignKey ('comment.id'))
     other_skills = db.Column(db.String(100))
     size_accepted = db.Column(db.String(10))
     comments = db.relationship('Comment', backref = 'buddy', lazy = True)
