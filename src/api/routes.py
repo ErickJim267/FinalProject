@@ -83,25 +83,4 @@ def create_token():
         access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
-#############################################################################
-###########  Esto se creó para las rutas de los componentes  ################
-#############################################################################
-
-@api.route('/register', methods=['POST', 'GET'])
-def handle_register():
-
-    response_body = {
-        "message": "Hello! I'm the register"
-    }
-
-    return jsonify(response_body), 200
-
-@api.route('/login', methods=['POST', 'GET'])
-def handle_login():
-
-    response_body = {
-        "message": "Hello! I'm the login"
-    }
-
-    return jsonify(response_body), 200
 
