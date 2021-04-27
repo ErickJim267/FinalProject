@@ -82,3 +82,5 @@ def create_token():
         # create a new token with user_id
         access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
+
+
