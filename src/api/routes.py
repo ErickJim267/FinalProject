@@ -10,6 +10,16 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 api = Blueprint('api', __name__)
 
+
+@jwt.user_identity_loader
+def user_identity_lookup(user):
+    return user.id
+
+@jwt.user_lookup_loader
+def user_lookup_callback(_jwt_header, jwt_data):
+    identity = jwt_data["sub"]
+    return User.query.filter_by(id=identity).one_or_none()
+
 # @api.route('/token', methods=['POST'])
 # def handle_token():
 #    return jsonify(response_body), 200
@@ -54,7 +64,7 @@ def register():
         return jsonify({"msg" : "User added successfully!"}), 200
 
 @api.route('/login', methods=['POST'])
-def signin():
+def login():
     password = request.json.get('password', None)
     email = request.json.get('email', None)
 
