@@ -1,13 +1,5 @@
 import React from "react";
-import {
-	Navbar,
-	Nav,
-	Form,
-	FormControl,
-	Button,
-	Card,
-	Col
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Button, Card, Col } from "react-bootstrap";
 
 export function BuddyForm() {
 	return (
@@ -21,39 +13,26 @@ export function BuddyForm() {
 					<Card.Text>
 						<Form.Group controlId="formBasicEmail">
 							<Form.Label>Name</Form.Label>
-							<Form.Control
-								type="name"
-								placeholder="Enter name"
-							/>
+							<Form.Control type="name" placeholder="Enter name" />
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
 							<Form.Label>Lastname</Form.Label>
-							<Form.Control
-								type="lastname"
-								placeholder="Enter Lastname"
-							/>
+							<Form.Control type="lastname" placeholder="Enter Lastname" />
 
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Telephone</Form.Label>
-								<Form.Control
-									type="telephone"
-									placeholder="+506 ____-____"
-								/>
+								<Form.Control type="telephone" placeholder="+506 ____-____" />
 							</Form.Group>
 
-							<Form.Label style={{ marginBottom: "20px" }}>
-								Date of birth
-							</Form.Label>
+							<Form.Label style={{ marginBottom: "20px" }}>Date of birth</Form.Label>
 
 							<Form.Row>
 								<Form.Group as={Col} controlId="formGridMonth">
 									<Form.Label>Month</Form.Label>
-									<Form.Control
-										as="select"
-										defaultValue="Choose a month">
+									<Form.Control as="select" defaultValue="Choose a month">
 										<option>Jan</option>
 										<option>Feb</option>
 										<option>Mar</option>
@@ -70,9 +49,7 @@ export function BuddyForm() {
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridMonth">
 									<Form.Label>Month</Form.Label>
-									<Form.Control
-										as="select"
-										defaultValue="Choose a month">
+									<Form.Control as="select" defaultValue="Choose a month">
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -134,32 +111,13 @@ export function BuddyForm() {
 
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>
-									Accepted weight for pet
-								</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Accepted weight for pet</Form.Label>
 
 								{["checkbox"].map(type => (
-									<div
-										key={`inline-${type}`}
-										className="mr-6">
-										<Form.Check
-											inline
-											label="2-10 lbs"
-											type={type}
-											id={`inline-${type}-1`}
-										/>
-										<Form.Check
-											inline
-											label="10-15 lbs"
-											type={type}
-											id={`inline-${type}-2`}
-										/>
-										<Form.Check
-											inline
-											label="+25 lbs"
-											type={type}
-											id={`inline-${type}-3`}
-										/>
+									<div key={`inline-${type}`} className="mr-6">
+										<Form.Check inline label="2-10 lbs" type={type} id={`inline-${type}-1`} />
+										<Form.Check inline label="10-15 lbs" type={type} id={`inline-${type}-2`} />
+										<Form.Check inline label="+25 lbs" type={type} id={`inline-${type}-3`} />
 									</div>
 								))}
 
@@ -168,32 +126,13 @@ export function BuddyForm() {
 						</Form>
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>
-									Services provided
-								</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Services provided</Form.Label>
 
 								{["checkbox"].map(type => (
-									<div
-										key={`inline-${type}`}
-										className="mr-6">
-										<Form.Check
-											inline
-											label="dog Walker"
-											type={type}
-											id={`inline-${type}-4`}
-										/>
-										<Form.Check
-											inline
-											label="lodging"
-											type={type}
-											id={`inline-${type}-5`}
-										/>
-										<Form.Check
-											inline
-											label="dog daycare"
-											type={type}
-											id={`inline-${type}-6`}
-										/>
+									<div key={`inline-${type}`} className="mr-6">
+										<Form.Check inline label="dog Walker" type={type} id={`inline-${type}-4`} />
+										<Form.Check inline label="lodging" type={type} id={`inline-${type}-5`} />
+										<Form.Check inline label="dog daycare" type={type} id={`inline-${type}-6`} />
 									</div>
 								))}
 							</Form>
@@ -201,9 +140,7 @@ export function BuddyForm() {
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>
-									Brief description about service
-								</Form.Label>
+								<Form.Label>Brief description about service</Form.Label>
 								<Form.Control as="textarea" rows={4} />
 							</Form.Group>
 

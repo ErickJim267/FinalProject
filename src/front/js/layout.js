@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { SectionTab } from "./pages/sectionTab";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
+import { Dashboard } from "./pages/dashboard";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -33,8 +34,8 @@ const Layout = () => {
 						<Route exact path="/reset-password">
 							<Resetpassword />
 						</Route>
-						<Route exact path="/sectionTab">
-							<SectionTab />
+						<Route exact path="/dashboard">
+							<Dashboard />
 						</Route>
 					</Switch>
 					<Footer />

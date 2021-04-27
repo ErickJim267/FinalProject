@@ -1,13 +1,5 @@
 import React from "react";
-import {
-	Navbar,
-	Nav,
-	Form,
-	FormControl,
-	Button,
-	Card,
-	Col
-} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Button, Card, Col } from "react-bootstrap";
 
 export function OwnerForm() {
 	return (
@@ -21,39 +13,26 @@ export function OwnerForm() {
 					<Card.Text>
 						<Form.Group controlId="formBasicEmail">
 							<Form.Label>Name</Form.Label>
-							<Form.Control
-								type="name"
-								placeholder="Enter name"
-							/>
+							<Form.Control type="name" placeholder="Enter name" />
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
 							<Form.Label>Lastname</Form.Label>
-							<Form.Control
-								type="lastname"
-								placeholder="Enter Lastname"
-							/>
+							<Form.Control type="lastname" placeholder="Enter Lastname" />
 
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Telephone</Form.Label>
-								<Form.Control
-									type="telephone"
-									placeholder="+506 ____-____"
-								/>
+								<Form.Control type="telephone" placeholder="+506 ____-____" />
 							</Form.Group>
 
-							<Form.Label style={{ marginBottom: "20px" }}>
-								Date of birth
-							</Form.Label>
+							<Form.Label style={{ marginBottom: "20px" }}>Date of birth</Form.Label>
 
 							<Form.Row>
 								<Form.Group as={Col} controlId="formGridMonth">
 									<Form.Label>Month</Form.Label>
-									<Form.Control
-										as="select"
-										defaultValue="Choose a month">
+									<Form.Control as="select" defaultValue="Choose a month">
 										<option>Jan</option>
 										<option>Feb</option>
 										<option>Mar</option>
@@ -70,9 +49,7 @@ export function OwnerForm() {
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridMonth">
 									<Form.Label>Month</Form.Label>
-									<Form.Control
-										as="select"
-										defaultValue="Choose a month">
+									<Form.Control as="select" defaultValue="Choose a month">
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -137,36 +114,16 @@ export function OwnerForm() {
 
 						<Form.Group controlId="formBasicpetname">
 							<Form.Label>Pet&#39;s Name</Form.Label>
-							<Form.Control
-								type="petname"
-								placeholder="Enter pet's name"
-							/>
+							<Form.Control type="petname" placeholder="Enter pet's name" />
 						</Form.Group>
 
-						<Form.Label style={{ marginBottom: "20px" }}>
-							Type of Animal
-						</Form.Label>
+						<Form.Label style={{ marginBottom: "20px" }}>Type of Animal</Form.Label>
 
 						{["checkbox"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
-								<Form.Check
-									inline
-									label="Cat"
-									type={type}
-									id={`inline-${type}-1`}
-								/>
-								<Form.Check
-									inline
-									label="Dog"
-									type={type}
-									id={`inline-${type}-2`}
-								/>
-								<Form.Check
-									inline
-									label="Other"
-									type={type}
-									id={`inline-${type}-3`}
-								/>
+								<Form.Check inline label="Cat" type={type} id={`inline-${type}-1`} />
+								<Form.Check inline label="Dog" type={type} id={`inline-${type}-2`} />
+								<Form.Check inline label="Other" type={type} id={`inline-${type}-3`} />
 							</div>
 						))}
 
@@ -174,32 +131,17 @@ export function OwnerForm() {
 
 						<Form.Group controlId="formBasicpetname">
 							<Form.Label>Pet&#39;s race</Form.Label>
-							<Form.Control
-								type="petname"
-								placeholder="Enter pet's race"
-							/>
+							<Form.Control type="petname" placeholder="Enter pet's race" />
 						</Form.Group>
 
 						<br />
 
-						<Form.Label style={{ marginBottom: "20px" }}>
-							Gender
-						</Form.Label>
+						<Form.Label style={{ marginBottom: "20px" }}>Gender</Form.Label>
 
 						{["radio"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
-								<Form.Check
-									inline
-									label="Male"
-									type={type}
-									id={`inline-${type}-7`}
-								/>
-								<Form.Check
-									inline
-									label="Female"
-									type={type}
-									id={`inline-${type}-8`}
-								/>
+								<Form.Check inline label="Male" type={type} id={`inline-${type}-7`} />
+								<Form.Check inline label="Female" type={type} id={`inline-${type}-8`} />
 							</div>
 						))}
 
@@ -218,32 +160,13 @@ export function OwnerForm() {
 
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>
-									Weight
-								</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Weight</Form.Label>
 
 								{["checkbox"].map(type => (
-									<div
-										key={`inline-${type}`}
-										className="mr-6">
-										<Form.Check
-											inline
-											label="2-10 lbs"
-											type={type}
-											id={`inline-${type}-1`}
-										/>
-										<Form.Check
-											inline
-											label="10-15 lbs"
-											type={type}
-											id={`inline-${type}-2`}
-										/>
-										<Form.Check
-											inline
-											label="+25 lbs"
-											type={type}
-											id={`inline-${type}-3`}
-										/>
+									<div key={`inline-${type}`} className="mr-6">
+										<Form.Check inline label="2-10 lbs" type={type} id={`inline-${type}-1`} />
+										<Form.Check inline label="10-15 lbs" type={type} id={`inline-${type}-2`} />
+										<Form.Check inline label="+25 lbs" type={type} id={`inline-${type}-3`} />
 									</div>
 								))}
 
@@ -252,51 +175,23 @@ export function OwnerForm() {
 						</Form>
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>
-									Vaccinated
-								</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Vaccinated</Form.Label>
 
 								{["radio"].map(type => (
-									<div
-										key={`inline-${type}`}
-										className="mr-6">
-										<Form.Check
-											inline
-											label="Yes"
-											type={type}
-											id={`inline-${type}-7`}
-										/>
-										<Form.Check
-											inline
-											label="No"
-											type={type}
-											id={`inline-${type}-8`}
-										/>
+									<div key={`inline-${type}`} className="mr-6">
+										<Form.Check inline label="Yes" type={type} id={`inline-${type}-7`} />
+										<Form.Check inline label="No" type={type} id={`inline-${type}-8`} />
 									</div>
 								))}
 
 								<br />
 
-								<Form.Label style={{ marginBottom: "20px" }}>
-									Dewormed
-								</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Dewormed</Form.Label>
 
 								{["radio"].map(type => (
-									<div
-										key={`inline-${type}`}
-										className="mr-6">
-										<Form.Check
-											inline
-											label="Yes"
-											type={type}
-											id={`inline-${type}-7`}
-										/>
-										<Form.Check
-											inline
-											label="No"
-											type={type}
-											id={`inline-${type}-8`}
-										/>
+									<div key={`inline-${type}`} className="mr-6">
+										<Form.Check inline label="Yes" type={type} id={`inline-${type}-7`} />
+										<Form.Check inline label="No" type={type} id={`inline-${type}-8`} />
 									</div>
 								))}
 							</Form>
@@ -304,9 +199,7 @@ export function OwnerForm() {
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>
-									Brief description about pet
-								</Form.Label>
+								<Form.Label>Brief description about pet</Form.Label>
 								<Form.Control as="textarea" rows={4} />
 							</Form.Group>
 
