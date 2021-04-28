@@ -11,7 +11,7 @@ export const Footer = () => (
 					<p>
 						<ul>
 							<p>Contáctanos</p>
-							<p>Acerca de PetbnbCR</p>
+							<p>Acerca de Petbnb</p>
 							<p>Nuestras redes sociales</p>
 							<div>
 								<a href="https://www.instagram.com" alt="https://www.instagram.com">
