@@ -2,10 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import shortuuid
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Owner, Buddy
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+
 
 api = Blueprint('api', __name__)
 
@@ -15,13 +17,16 @@ api = Blueprint('api', __name__)
 
 @api.route('/register', methods=['POST'])
 def register():
+    _id = request.json.get('id', None)
     password = request.json.get('password', None)
     email = request.json.get('email', None)
     name = request.json.get('name', None)
-    user_role = request.json.get('rol', None)
+    user_role = request.json.get('role', None)
     ## tipo de usuario
     last_name = request.json.get('last_name', None)
     
+    if _id is None:
+        return 'You need to specify the password', 400
     if password is None:
         return 'You need to specify the password', 400
     if email is None:
@@ -36,17 +41,17 @@ def register():
     user = User.query.filter_by(email=email).first()
 
     if user:
-        return jsonify({"msg" : "User already exist"})
+        return jsonify({"msg" : "User already exist"}), 409
     else: 
-        new_user = User(email=email, password=password, name=name, last_name=last_name, user_role=user_role, is_active=True)
+        new_user = User(id=_id, email=email, password=password, name=name, last_name=last_name, user_role=user_role, is_active=True)
         db.session.add(new_user)
         db.session.commit()
         if user_role == 'owner':
-            new_owner = Owner(user_id=new_user.id)    
+            new_owner = Owner(id=shortuuid.uuid(), user_id=_id)    
             db.session.add(new_owner)
             db.session.commit()
         else:
-            new_buddy = Buddy(user_id=new_user.id)    
+            new_buddy = Buddy(id=shortuuid.uuid(), user_id=_id)    
             db.session.add(new_buddy)
             db.session.commit()
         
