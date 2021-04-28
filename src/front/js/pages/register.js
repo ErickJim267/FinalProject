@@ -21,7 +21,7 @@ export function Register() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		// validar formulario
-		!validateForm(e) && return;
+		if(!validateForm(e)) return;
 
 		// Registrar nuevo usuario
 		const id = short.uuid();
