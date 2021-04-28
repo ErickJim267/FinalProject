@@ -14,7 +14,7 @@ const FormSearch = () => {
 
 	return (
 		// Filtros de busqueda
-		<form className="form-search">
+		<form className="form-search mt-5 py-4">
 			<div className="form-row">
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectLocation">Location</label> */}
@@ -58,11 +58,11 @@ const FormSearch = () => {
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
 					<select id="selectService" className="form-control">
-						<option hidden>Dog size (lbs)</option>
-						<option>0-15</option>
-						<option>16-40</option>
-						<option>41-100</option>
-						<option>101+</option>
+						<option hidden>Dog size (kg)</option>
+						<option>1-10</option>
+						<option>11-25</option>
+						<option>26-45</option>
+						<option>+45</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">

@@ -5,7 +5,7 @@ import FormSearch from "../component/formSearch";
 
 const Search = () => {
 	return (
-		<div className="container-fluid py-2">
+		<div className="container-fluid py-2 my-5">
 			<FormSearch />
 			<div className="row mt-3">
 				<div className="col-md-7">

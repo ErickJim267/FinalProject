@@ -2,7 +2,7 @@ import React from "react";
 
 const DataSheetBuddy = () => {
 	return (
-		<div className="data-sheet-buddy">
+		<div className="data-sheet-buddy mt-5">
 			<div className="row">
 				<div className="col-md-4 d-flex justify-content-center py-4">
 					<img

@@ -6,7 +6,7 @@ import MainInfoBuddy from "../component/mainInfoBuddy";
 
 const ProfileBuddyView = () => {
 	return (
-		<div className="container">
+		<div className="container mt-5">
 			<DataSheetBuddy />
 			<div className="row mt-4 text-gray">
 				<div className="col-md-4 p-4">
