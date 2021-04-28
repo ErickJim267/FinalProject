@@ -20,6 +20,8 @@ class User(db.Model):
     about_me_short = db.Column(db.String(100), nullable=True)
     about_me_long = db.Column(db.Text, nullable=True)
     addresses = db.relationship('Address', backref = 'User', lazy = True)
+    buddy = db.relationship('Buddy', backref = 'User', uselist=False)
+    owner = db.relationship('Owner', backref = 'User', uselist=False)
 
     def __repr__(self):
         return '<User %r>' % self.id

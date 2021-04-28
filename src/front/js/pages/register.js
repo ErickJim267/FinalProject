@@ -28,9 +28,12 @@ export function Register() {
 		const user = { id, role, name, lastName, email, password };
 
 		actions.registerUser(user).then(res => {
-			//reset formulario
-			resetForm();
-			res && setAuth(true);
+            if(res) {
+                //reset formulario
+			    resetForm();
+			    setAuth(true);
+            }
+			
 		});
 	};
 

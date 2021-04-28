@@ -79,4 +79,21 @@ def create_token():
         access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
+@api.route("/buddy", methods=["GET"])
+def get_all_buddy():
+    buddy = Buddy.query.filter_by().all
+    users = User.query.all()
+
+    all_users = list(map(lambda user: user.serialize(), users))
+    
+
+    if all_users is None:
+        return jsonify('No existing users yet!'),200
+    else:
+        return jsonify(all_users), 200
+
+
+    
+
+  
 

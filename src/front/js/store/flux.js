@@ -44,7 +44,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Ha ocurrido un error al registrarse", error);
 				}
 			},
-			login: (email, password) {
+			login: (email, password) => {
 				console.log("Logueando....");
 			},
 			// Use getActions to call a function within a fuction
