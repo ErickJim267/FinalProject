@@ -30,6 +30,7 @@ class User(db.Model):
         return safe_str_cmp(password, self.password)
 
     def to_dict(self):
+        # return { c.name: getattr(self, c.name) for c in self.__table__.columns }
         return {
             "id": self.id,
             "name": self.name,
@@ -42,6 +43,7 @@ class User(db.Model):
             "profile_photo": self.profile_photo,
             "about_me_short": self.about_me_short,
             "about_me_long": self.about_me_long
+            # "addresses": list(map(lambda address:address.serialize(),self.addresses))
             # do not serialize the password, its a security breach
         }
 

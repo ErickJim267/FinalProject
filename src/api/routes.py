@@ -81,10 +81,20 @@ def create_token():
 
 @api.route("/buddy", methods=["GET"])
 def get_all_buddy():
-    buddy = Buddy.query.filter_by().all
-    users = User.query.all()
+    buddy = Buddy.query.all()
+    users = User.query.filter_by(user_role="buddy").all
+    
+    # db.session.query(Reclamo, Servicio, Cliente, Estado).\
+    # join(Reclamo.servicio, Reclamo.cliente, Reclamo.estado).\
+    # all()
+    
+    # db.session.query(Reclamo, Servicio, Cliente, Estado).\
+    # join(Reclamo.servicio, Reclamo.cliente, Reclamo.estado).\
+    # filter(Estado.id == 1).\
+    # all()
 
-    all_users = list(map(lambda user: user.serialize(), users))
+    all_users = list(map(lambda user: user.to_dict(), users))
+    all_user
     
 
     if all_users is None:
@@ -94,6 +104,18 @@ def get_all_buddy():
 
 
     
-
+# def post(self):
+#     data = request.get_json()
+#     film_dict = film_schema.load(data)
+#     film = Film(title=film_dict['title'],
+#                 length=film_dict['length'],
+#                 year=film_dict['year'],
+#                 director=film_dict['director']
+#     )
+#     for actor in film_dict['actors']:
+#         film.actors.append(Actor(actor['name']))
+#     film.save()
+#     resp = film_schema.dump(film)
+#     return resp, 201
   
 
