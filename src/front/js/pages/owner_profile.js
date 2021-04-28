@@ -11,7 +11,7 @@ export const Owner_profile = () => {
 						<Card>
 							<Card>
 								<Card.Img
-									src="https://www.capital.de/wp-content/uploads/2019/05/GettyImages-453408496.jpg"
+									src="https://ichef.bbci.co.uk/news/640/cpsprodpb/150EA/production/_107005268_gettyimages-611696954.jpg"
 									alt="your pet picture here"
 									className="imgContainer"
 								/>

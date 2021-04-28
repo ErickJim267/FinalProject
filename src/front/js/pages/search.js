@@ -11,12 +11,12 @@ const Search = () => {
 				<div className="col-md-7">
 					<div className="row row-cols-2">
 						<div className="col-md-6 mb-3 px-2">
-							<Link to="/" className="text-decoration-none text-reset">
+							<Link to="/owner-profile" className="text-decoration-none text-reset">
 								<Card />
 							</Link>
 						</div>
 						<div className="col-md-6 mb-3 px-2">
-							<Link to="/" className="text-decoration-none text-reset">
+							<Link to="/owner-profile" className="text-decoration-none text-reset">
 								<Card />
 							</Link>
 						</div>

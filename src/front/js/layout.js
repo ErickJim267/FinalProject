@@ -12,6 +12,7 @@ import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
 import ProfileBuddyView from "./pages/profileBuddyView";
 import Search from "./pages/search";
+import { Owner_profile } from "./pages/owner_profile";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -45,6 +46,7 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/owner-profile">
 							{/* vista del perfil del owner */}
+							<Owner_profile />
 						</Route>
 					</Switch>
 					<Footer />
