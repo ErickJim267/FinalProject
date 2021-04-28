@@ -1,19 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export function Login() {
 	const [validated, setValidated] = useState(false);
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("");
 
-	const handleSubmit = event => {
-		const form = event.currentTarget;
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
+	const { store, actions } = useContext(Context);
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		// validar formulario
+		if(!validateForm(e)) return;
+
+		// actions.login(email, password).then(res => {
+		// 	//reset formulario
+		// 	if(res) {
+		// 		resetForm();
+		// 		setAuth(true);
+		// 	}
+		// });
+	};
+
+	const validateForm = e => {
+		// const form = e.currentTarget;
+		// if (form.checkValidity() === false) {
+		// 	e.preventDefault();
+		// 	e.stopPropagation();
+		// }
+		// setValidated(true);
+
+		if (email.trim() === "") {
+			alert("Debe de escribir un email");
+			return false;
+		}
+		if (password === "") {
+			alert("Debe de escribir una contraseña");
+			return false;
 		}
 
-		setValidated(true);
+		return true;
+	};
+
+	const resetForm = () => {
+		setEmail("");
+		setPassword("");
 	};
 
 	return (
@@ -21,38 +55,42 @@ export function Login() {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						<h1>Log In</h1>
+						<h1>Ingreso</h1>
 					</Card.Title>
-
 					<br />
-
 					<div>
-						<Form noValidate validated={validated} onSubmit={handleSubmit}>
+						<Form onSubmit={handleSubmit}>
 							<br />
-
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control required type="email" placeholder="Enter email" />
+								<Form.Label>E-mail</Form.Label>
+								<Form.Control 
+									required 
+									type="email" 
+									placeholder="Enter email" 
+									value={email}
+									onChange={e => setEmail(e.target.value)}
+								/>
 								<Form.Text className="text-muted" />
 							</Form.Group>
-
 							<br />
-
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control required type="password" placeholder="Password" />
+								<Form.Control 
+									required 
+									type="password" 
+									placeholder="Password"
+									value={password}
+									onChange={e => setPassword(e.target.value)}
+								/>
 							</Form.Group>
-
 							<br />
-
 							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
-								Login
+								Ingresar
 							</Button>
 						</Form>
-
 						<br />
 						<Link to="/reset-password">
-							<small className="text-muted">Forgot password?</small>
+							<small className="text-muted">Olvidó la contraseña?</small>
 						</Link>
 					</div>
 				</Card.Body>

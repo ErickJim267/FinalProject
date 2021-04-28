@@ -1,8 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import { Buddy } from "./buddy";
-import { Owner } from "./owner";
-import { OwnerForm } from "./ownerForm";
+import { BuddyForm } from "../component/buddyForm";
+import { OwnerForm } from "../component/ownerForm";
 
 export function Dashboard() {
 	return (
@@ -12,15 +11,13 @@ export function Dashboard() {
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="mr-auto">
-						<Nav.Link href="#f"></Nav.Link>
-						<Nav.Link href="#p"></Nav.Link>
+						<Nav.Link href="#f" />
+						<Nav.Link href="#p" />
 					</Nav>
 					<Nav>
-						<Nav.Link href="#notificaciones">
-							Notificaciones
-						</Nav.Link>
+						<Nav.Link href="#notificaciones">Notificaciones</Nav.Link>
 						<Nav.Link eventKey={2} href="#cerrarsesion">
-							Cerrar Sesion
+							Cerrar Sesión
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
@@ -31,8 +28,8 @@ export function Dashboard() {
 			<h6>Welcome User</h6>
 
 			<br />
-			{/* <Buddy /> */}
-			<OwnerForm />
+			<BuddyForm />
+			{/* <OwnerForm /> */}
 		</div>
 	);
 }

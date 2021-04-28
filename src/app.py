@@ -6,8 +6,8 @@ from flask import Flask, request, jsonify, url_for, send_from_directory
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
-from api.utils import APIException, generate_sitemap
-from api.models import db
+from api.utils import APIException, generate_sitemap, load_users
+from api.models import db, User
 from api.routes import api
 from api.admin import setup_admin
 from flask_jwt_extended import JWTManager
@@ -34,8 +34,8 @@ def user_lookup_callback(_jwt_header, jwt_data):
     return User.query.filter_by(id=identity).one_or_none()
 
 # database condiguration
-if os.getenv("DATABASE_URL") is not None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+if os.getenv("LOCAL_DATABASE_URL") is not None:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('LOCAL_DATABASE_URL')
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
@@ -62,6 +62,10 @@ def user_identity_lookup(user):
 def user_lookup_callback(_jwt_header, jwt_data):
     identity = jwt_data["sub"]
     return User.query.filter_by(id=identity).one_or_none()
+
+@app.before_first_request
+def load_data():
+    load_users()
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

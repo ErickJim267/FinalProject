@@ -1,26 +1,18 @@
 import React from "react";
-import {
-	Navbar,
-	Nav,
-	Form,
-	FormControl,
-	Button,
-	Card,
-	Col
-} from "react-bootstrap";
+import { Form, Button,	Card, Col} from "react-bootstrap";
 
 export function OwnerForm() {
 	return (
 		<div>
 			<Card style={{ width: "50rem", margin: "auto" }}>
 				<Card.Body>
-					<Card.Header>Create profile - Owner</Card.Header>
+					<Card.Header>Crear perfil - Dueño</Card.Header>
 
 					<br />
 
 					<Card.Text>
 						<Form.Group controlId="formBasicEmail">
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Nombre</Form.Label>
 							<Form.Control
 								type="name"
 								placeholder="Enter name"
@@ -28,7 +20,7 @@ export function OwnerForm() {
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
-							<Form.Label>Lastname</Form.Label>
+							<Form.Label>Apellidos</Form.Label>
 							<Form.Control
 								type="lastname"
 								placeholder="Enter Lastname"
@@ -37,7 +29,7 @@ export function OwnerForm() {
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Telephone</Form.Label>
+								<Form.Label>Teléfono</Form.Label>
 								<Form.Control
 									type="telephone"
 									placeholder="+506 ____-____"
@@ -45,31 +37,31 @@ export function OwnerForm() {
 							</Form.Group>
 
 							<Form.Label style={{ marginBottom: "20px" }}>
-								Date of birth
+								Fecha de Nacimiento
 							</Form.Label>
 
 							<Form.Row>
 								<Form.Group as={Col} controlId="formGridMonth">
-									<Form.Label>Month</Form.Label>
+									<Form.Label>Mes</Form.Label>
 									<Form.Control
 										as="select"
 										defaultValue="Choose a month">
-										<option>Jan</option>
+										<option>Ene</option>
 										<option>Feb</option>
 										<option>Mar</option>
-										<option>Apr</option>
+										<option>Abr</option>
 										<option>May</option>
 										<option>Jun</option>
 										<option>Jul</option>
-										<option>Aug</option>
+										<option>Ago</option>
 										<option>Sep</option>
 										<option>Oct</option>
 										<option>Nov</option>
-										<option>Dec</option>
+										<option>Dic</option>
 									</Form.Control>
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridMonth">
-									<Form.Label>Month</Form.Label>
+									<Form.Label>Día</Form.Label>
 									<Form.Control
 										as="select"
 										defaultValue="Choose a month">
@@ -107,14 +99,14 @@ export function OwnerForm() {
 									</Form.Control>
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridYear">
-									<Form.Label>Year</Form.Label>
+									<Form.Label>Año</Form.Label>
 
 									<Form.Control />
 								</Form.Group>
 							</Form.Row>
 						</Form.Group>
 						<Form.Group controlId="exampleForm.ControlSelect1">
-							<Form.Label>State</Form.Label>
+							<Form.Label>Provincia</Form.Label>
 							<Form.Control as="select">
 								<option>Alajuela</option>
 								<option>Cartago</option>
@@ -127,16 +119,16 @@ export function OwnerForm() {
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>Exact address</Form.Label>
+								<Form.Label>Dirección</Form.Label>
 								<Form.Control as="textarea" rows={3} />
 							</Form.Group>
 						</Form.Group>
 
-						<h5> Pet information </h5>
+						<h5>Información de la Mascota</h5>
 						<br />
 
 						<Form.Group controlId="formBasicpetname">
-							<Form.Label>Pet&#39;s Name</Form.Label>
+							<Form.Label>Nombre de la mascota</Form.Label>
 							<Form.Control
 								type="petname"
 								placeholder="Enter pet's name"
@@ -144,7 +136,7 @@ export function OwnerForm() {
 						</Form.Group>
 
 						<Form.Label style={{ marginBottom: "20px" }}>
-							Type of Animal
+							Tipo de mascota
 						</Form.Label>
 
 						{["checkbox"].map(type => (
@@ -173,7 +165,7 @@ export function OwnerForm() {
 						<br />
 
 						<Form.Group controlId="formBasicpetname">
-							<Form.Label>Pet&#39;s race</Form.Label>
+							<Form.Label>Raza de la mascota</Form.Label>
 							<Form.Control
 								type="petname"
 								placeholder="Enter pet's race"
@@ -183,7 +175,7 @@ export function OwnerForm() {
 						<br />
 
 						<Form.Label style={{ marginBottom: "20px" }}>
-							Gender
+							Género
 						</Form.Label>
 
 						{["radio"].map(type => (
@@ -206,20 +198,20 @@ export function OwnerForm() {
 						<br />
 
 						<Form.Group controlId="exampleForm.SelectCustomSizeSm">
-							<Form.Label>Age</Form.Label>
+							<Form.Label>Edad</Form.Label>
 							<Form.Control as="select" size="sm" custom>
-								<option>1-2 years</option>
-								<option>2-5 years</option>
-								<option>5-10 years</option>
-								<option>10-15 years</option>
-								<option>+15years </option>
+								<option>1-2 años</option>
+								<option>2-5 años</option>
+								<option>5-10 años</option>
+								<option>10-15 años</option>
+								<option>+15 años </option>
 							</Form.Control>
 						</Form.Group>
 
 						<Form>
 							<Form>
 								<Form.Label style={{ marginBottom: "20px" }}>
-									Weight
+									Peso
 								</Form.Label>
 
 								{["checkbox"].map(type => (
@@ -253,7 +245,7 @@ export function OwnerForm() {
 						<Form>
 							<Form>
 								<Form.Label style={{ marginBottom: "20px" }}>
-									Vaccinated
+									Vacunado?
 								</Form.Label>
 
 								{["radio"].map(type => (
@@ -262,7 +254,7 @@ export function OwnerForm() {
 										className="mr-6">
 										<Form.Check
 											inline
-											label="Yes"
+											label="Sí"
 											type={type}
 											id={`inline-${type}-7`}
 										/>
@@ -278,7 +270,7 @@ export function OwnerForm() {
 								<br />
 
 								<Form.Label style={{ marginBottom: "20px" }}>
-									Dewormed
+									Desparasitado?
 								</Form.Label>
 
 								{["radio"].map(type => (
@@ -287,7 +279,7 @@ export function OwnerForm() {
 										className="mr-6">
 										<Form.Check
 											inline
-											label="Yes"
+											label="Sí"
 											type={type}
 											id={`inline-${type}-7`}
 										/>
@@ -305,7 +297,7 @@ export function OwnerForm() {
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label>
-									Brief description about pet
+									Breve descripción de la mascota
 								</Form.Label>
 								<Form.Control as="textarea" rows={4} />
 							</Form.Group>
@@ -313,7 +305,7 @@ export function OwnerForm() {
 							<br />
 						</Form>
 					</Card.Text>
-					<Button variant="primary">Create profile</Button>
+					<Button variant="primary">Crear perfil</Button>
 				</Card.Body>
 			</Card>
 		</div>

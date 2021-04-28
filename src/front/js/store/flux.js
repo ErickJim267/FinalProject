@@ -16,6 +16,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			registerUser: async user => {
+				const opts = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						id: user.id,
+						email: user.email,
+						name: user.name,
+						last_name: user.lastName,
+						role: user.role,
+						password: user.password
+					})
+				};
+
+				try {
+					const res = await fetch(process.env.BACKEND_URL + "/api/register", opts);
+					if (res.status !== 200) {
+						alert("Sucedió un error");
+						return false;
+                    }//Pendiente revisar lógica
+                    else if(res.status === 409){
+                        alert("Usuario ya existe");
+						return false;
+                    }
+					const data = await res.json();
+					return true;
+				} catch (error) {
+					console.log("Ha ocurrido un error al registrarse", error);
+				}
+			},
+			login: (email, password) => {
+				console.log("Logueando....");
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

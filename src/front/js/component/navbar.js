@@ -12,13 +12,13 @@ export const Navbar = () => {
 			<div className="ml-auto" style={{ display: "inline-flex" }}>
 				<Link to="/register">
 					<button className="btnNav" style={{ margin: "10px" }}>
-						Register
+						Registro
 					</button>
 				</Link>
 				<br />
 				<Link to="/login">
 					<button className="btnNav" style={{ margin: "10px" }}>
-						Login
+						Ingresar
 					</button>
 				</Link>
 			</div>
