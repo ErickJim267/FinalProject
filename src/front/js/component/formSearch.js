@@ -49,10 +49,9 @@ const FormSearch = () => {
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					<select id="selectService" className="form-control">
-						<option hidden>Tipo de Servicio</option>
-						<option>Alojamiento</option>
-						<option>Paseo</option>
-						<option>Guardería</option>
+						<option hidden>Tipo de Mascota</option>
+						<option>Perro</option>
+						<option>Gato</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">

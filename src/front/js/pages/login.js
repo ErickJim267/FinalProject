@@ -16,6 +16,7 @@ export function Login() {
 		// validar formulario
 		if (!validateForm(e)) return;
 
+		//Empezar acá
 		// actions.login(email, password).then(res => {
 		// 	//reset formulario
 		// 	if(res) {
@@ -55,14 +56,14 @@ export function Login() {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						<h1>Ingreso</h1>
+						<h1>Log In</h1>
 					</Card.Title>
 					<br />
 					<div>
 						<Form onSubmit={handleSubmit}>
 							<br />
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>E-mail</Form.Label>
+								<Form.Label>Email address</Form.Label>
 								<Form.Control
 									required
 									type="email"
@@ -85,12 +86,12 @@ export function Login() {
 							</Form.Group>
 							<br />
 							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
-								Ingresar
+								Login
 							</Button>
 						</Form>
 						<br />
 						<Link to="/reset-password">
-							<small className="text-muted">Olvidó la contraseña?</small>
+							<small className="text-muted">Forgot password?</small>
 						</Link>
 					</div>
 				</Card.Body>
