@@ -37,11 +37,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (res.status !== 200) {
 						alert("Sucedió un error");
 						return false;
-                    }//Pendiente revisar lógica
-                    else if(res.status === 409){
-                        alert("Usuario ya existe");
+					} //Pendiente revisar lógica
+					else if (res.status === 409) {
+						alert("Usuario ya existe");
 						return false;
-                    }
+					}
 					const data = await res.json();
 					return true;
 				} catch (error) {

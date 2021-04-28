@@ -80,8 +80,10 @@
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-bootstrap": "^1.5.2",
+		"react-datepicker": "^3.8.0",
 		"react-dom": "^16.8.4",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "^5.2.0",
+		"short-uuid": "^4.1.0"
 	}
 }

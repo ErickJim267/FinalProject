@@ -36,9 +36,7 @@ export function Resetpassword() {
 								<Form.Text className="text-muted" />
 							</Form.Group>
 
-							<small className="text-muted">
-								Recibirá un correo con los pasos a seguir
-							</small>
+							<small className="text-muted">Recibirá un correo con los pasos a seguir</small>
 							<br />
 
 							<br />
@@ -58,7 +56,6 @@ export function Resetpassword() {
 				<Card.Img
 					variant="center"
 					src="https://www.elrancaguino.cl/wp-content/uploads/2019/02/perro-y-gato.jpg"
-					
 				/>
 			</Card>
 		</CardGroup>

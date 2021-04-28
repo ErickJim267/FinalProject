@@ -36,6 +36,7 @@ const SectionTab = () => {
 									<div>
 										<img src={owner1} />
 									</div>
+									Ingresa tus datos
 								</div>
 								<div>
 									<div className="card">
@@ -45,6 +46,7 @@ const SectionTab = () => {
 									<div>
 										<img src={owner2} />
 									</div>
+									Elige un periodo para tus planes
 								</div>
 								<div>
 									<div className="card">
@@ -54,6 +56,7 @@ const SectionTab = () => {
 									<div>
 										<img src={owner3} />
 									</div>
+									Agenda una reservación
 								</div>
 							</div>
 						</Tab.Pane>
@@ -67,6 +70,7 @@ const SectionTab = () => {
 									<div>
 										<img src={buddy1} />
 									</div>
+									Verifica tu lugar y espacio
 								</div>
 								<div>
 									<div className="card">
@@ -76,6 +80,7 @@ const SectionTab = () => {
 									<div>
 										<img src={buddy2} />
 									</div>
+									Ingresa tus datos como Buddy
 								</div>
 								<div>
 									<div className="card">
@@ -85,6 +90,7 @@ const SectionTab = () => {
 									<div>
 										<img src={buddy3} />
 									</div>
+									Revisa las reserviaciones y elige según tu disponibilidad
 								</div>
 							</div>
 						</Tab.Pane>

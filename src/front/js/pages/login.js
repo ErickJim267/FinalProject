@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 
 export function Login() {
 	const [validated, setValidated] = useState(false);
-	const [email, setEmail] = useState("")
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const { store, actions } = useContext(Context);
@@ -14,7 +14,7 @@ export function Login() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		// validar formulario
-		if(!validateForm(e)) return;
+		if (!validateForm(e)) return;
 
 		// actions.login(email, password).then(res => {
 		// 	//reset formulario
@@ -63,10 +63,10 @@ export function Login() {
 							<br />
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>E-mail</Form.Label>
-								<Form.Control 
-									required 
-									type="email" 
-									placeholder="Enter email" 
+								<Form.Control
+									required
+									type="email"
+									placeholder="Enter email"
 									value={email}
 									onChange={e => setEmail(e.target.value)}
 								/>
@@ -75,9 +75,9 @@ export function Login() {
 							<br />
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control 
-									required 
-									type="password" 
+								<Form.Control
+									required
+									type="password"
 									placeholder="Password"
 									value={password}
 									onChange={e => setPassword(e.target.value)}
