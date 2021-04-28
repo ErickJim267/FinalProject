@@ -1,29 +1,29 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button, Card, Col } from "react-bootstrap";
+import { Form, Card, Col } from "react-bootstrap";
 
 export function BuddyForm() {
 	return (
 		<div>
 			<Card style={{ width: "50rem", margin: "auto" }}>
 				<Card.Body>
-					<Card.Header>Create profile - Buddy</Card.Header>
+					<Card.Header>Crear perfil - Buddy</Card.Header>
 
 					<br />
 
 					<Card.Text>
 						<Form.Group controlId="formBasicEmail">
-							<Form.Label>Name</Form.Label>
+							<Form.Label>Nombre</Form.Label>
 							<Form.Control type="name" placeholder="Enter name" />
 						</Form.Group>
 
 						<Form.Group controlId="formBasicPassword">
-							<Form.Label>Lastname</Form.Label>
+							<Form.Label>Apellido</Form.Label>
 							<Form.Control type="lastname" placeholder="Enter Lastname" />
 
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Telephone</Form.Label>
+								<Form.Label>Teléfono</Form.Label>
 								<Form.Control type="telephone" placeholder="+506 ____-____" />
 							</Form.Group>
 
@@ -31,24 +31,24 @@ export function BuddyForm() {
 
 							<Form.Row>
 								<Form.Group as={Col} controlId="formGridMonth">
-									<Form.Label>Month</Form.Label>
+									<Form.Label>Mes</Form.Label>
 									<Form.Control as="select" defaultValue="Choose a month">
-										<option>Jan</option>
+										<option>Ene</option>
 										<option>Feb</option>
 										<option>Mar</option>
-										<option>Apr</option>
+										<option>Abr</option>
 										<option>May</option>
 										<option>Jun</option>
 										<option>Jul</option>
-										<option>Aug</option>
+										<option>Ago</option>
 										<option>Sep</option>
 										<option>Oct</option>
 										<option>Nov</option>
-										<option>Dec</option>
+										<option>Dic</option>
 									</Form.Control>
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridMonth">
-									<Form.Label>Month</Form.Label>
+									<Form.Label>Día</Form.Label>
 									<Form.Control as="select" defaultValue="Choose a month">
 										<option>1</option>
 										<option>2</option>
@@ -84,14 +84,14 @@ export function BuddyForm() {
 									</Form.Control>
 								</Form.Group>
 								<Form.Group as={Col} controlId="formGridYear">
-									<Form.Label>Year</Form.Label>
+									<Form.Label>Año</Form.Label>
 
 									<Form.Control />
 								</Form.Group>
 							</Form.Row>
 						</Form.Group>
 						<Form.Group controlId="exampleForm.ControlSelect1">
-							<Form.Label>State</Form.Label>
+							<Form.Label>Provincia</Form.Label>
 							<Form.Control as="select">
 								<option>Alajuela</option>
 								<option>Cartago</option>
@@ -104,14 +104,14 @@ export function BuddyForm() {
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>Exact address</Form.Label>
+								<Form.Label>Dirección exacta</Form.Label>
 								<Form.Control as="textarea" rows={3} />
 							</Form.Group>
 						</Form.Group>
 
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>Accepted weight for pet</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Peso de mascota aceptado</Form.Label>
 
 								{["checkbox"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
@@ -126,7 +126,7 @@ export function BuddyForm() {
 						</Form>
 						<Form>
 							<Form>
-								<Form.Label style={{ marginBottom: "20px" }}>Services provided</Form.Label>
+								<Form.Label style={{ marginBottom: "20px" }}>Servicios brindados</Form.Label>
 
 								{["checkbox"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
@@ -140,26 +140,26 @@ export function BuddyForm() {
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>Brief description about service</Form.Label>
+								<Form.Label>Breve descripción de los servicios</Form.Label>
 								<Form.Control as="textarea" rows={4} />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>About me</Form.Label>
+								<Form.Label>Acerca de mí</Form.Label>
 								<Form.Control as="textarea" rows={3} />
 							</Form.Group>
 
 							<br />
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
-								<Form.Label>Additional skills</Form.Label>
+								<Form.Label>Otras habilidades</Form.Label>
 								<Form.Control as="textarea" rows={2} />
 							</Form.Group>
 						</Form>
 					</Card.Text>
-					<Button variant="primary">Create profile</Button>
+					<Button variant="primary">Crear perfil</Button>
 				</Card.Body>
 			</Card>
 		</div>
