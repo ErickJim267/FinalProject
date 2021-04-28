@@ -1,0 +1,28 @@
+@import 'variables';
+
+.card { font-size: 14px; }
+
+.card-img-profile {
+    height: 80px;
+    width: 80px;
+}
+
+.card-name,
+.card-price span{
+    color: $orange-primary;
+}
+
+.card-text { font-size: 13.5px; }
+
+.card-available {
+    background-color: $bg-available;
+}
+
+.card-review {
+    margin-bottom: .8rem;
+    line-height: 1;
+}
+.card-rating span {
+    font-size: 1rem;
+}
+

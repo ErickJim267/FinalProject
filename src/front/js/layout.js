@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Profiler } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
@@ -7,10 +7,11 @@ import { Register } from "./pages/register";
 import { Resetpassword } from "./pages/resetpassword";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
-
-import { SectionTab } from "./pages/sectionTab";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
+import { Dashboard } from "./pages/dashboard";
+import ProfileBuddyView from "./pages/profileBuddyView";
+import Search from "./pages/search";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -30,11 +31,20 @@ const Layout = () => {
 						<Route exact path="/register">
 							<Register />
 						</Route>
+						<Route exact path="/dashboard">
+							<Dashboard />
+						</Route>
 						<Route exact path="/reset-password">
 							<Resetpassword />
 						</Route>
-						<Route exact path="/sectionTab">
-							<SectionTab />
+						<Route exact path="/search">
+							<Search />
+						</Route>
+						<Route exact path="/buddy-profile">
+							<ProfileBuddyView />
+						</Route>
+						<Route exact path="/owner-profile">
+							{/* vista del perfil del owner */}
 						</Route>
 					</Switch>
 					<Footer />

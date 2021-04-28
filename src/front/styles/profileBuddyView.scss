@@ -1,0 +1,62 @@
+// 
+
+.color-card {
+    background-color: #EBEBEB;
+}
+
+.text-gray {
+    color: #555555;
+}
+
+.service-price {
+    span {
+        font-size: 1.4rem;
+    }
+}
+
+.media img {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.media-body-talk {
+    margin-left: 10px;
+    margin-bottom: 30px;
+    padding: .7rem;
+    border: 1px solid #999;
+    position: relative;
+    border-radius: 5px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        right: 98.99%; /* 612px; */
+        top: 26px;
+        width: 13px;
+        height: 13px;
+        border: 1px solid #999;
+        border-top: 1px solid transparent;
+        border-right: 1px solid transparent;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 98.779%;
+        top: 26px;
+        width: 13px;
+        height: 13px;
+        background: #CADCE4;  
+        transform: rotate(45deg);
+    }
+}
+
+.media {
+    .date-review {
+        font-size: 11px;
+    }
+}
