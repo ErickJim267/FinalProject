@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import safe_str_cmp  
 import shortuuid    
+import datetime
 
 db = SQLAlchemy()
 
@@ -17,7 +18,7 @@ class User(db.Model):
     birth_date = db.Column(db.String(30), nullable = True)
     user_role = db.Column(db.String(10), nullable = False)
     is_active = db.Column(db.Boolean(), nullable=False)
-    profile_photo = db.Column(db.String(100), nullable=True)
+    user_photo = db.Column(db.String(100), nullable=True)
     about_me_short = db.Column(db.String(100), nullable=True)
     about_me_long = db.Column(db.Text, nullable=True)
     addresses = db.relationship('Address', backref = 'user', lazy = True)
@@ -41,7 +42,7 @@ class User(db.Model):
             "phone": self.phone,
             "user_role": self.user_role,
             "is_active": self.is_active,
-            "profile_photo": self.profile_photo,
+            "user_photo": self.user_photo,
             "about_me_short": self.about_me_short,
             "about_me_long": self.about_me_long,
             "addresses": list(map(lambda location: location.to_dict(), self.addresses))
@@ -96,6 +97,7 @@ class Pet(db.Model):
     __tablename__ = 'pet'
     id = db.Column(db.Integer, primary_key=True)
     pet_name = db.Column(db.String(30), nullable=False)
+    pet_photo = db.Column(db.String(100), nullable=True)
     owner_id = db.Column(db.String(255), db.ForeignKey('owner.user_id'), nullable=False)
     specie = db.Column(db.String(10))
     size = db.Column(db.String(10))
@@ -121,7 +123,8 @@ class Pet(db.Model):
             "sterilized": self.sterilized,
             "vaccinated": self.vaccinated,
             "dewormed": self.dewormed,
-            "personality": self.personality
+            "personality": self.personality,
+            "pet_photo": self.pet_photo
         }
 
 
@@ -162,6 +165,7 @@ class Comment(db.Model):
     # id = db.Column(db.String(255), primary_key=True)
     comment_body= db.Column(db.Text)
     count_rating= db.Column(db.Integer)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
     id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.user_id'))
     id_owner = db.Column(db.String(255), db.ForeignKey ('owner.user_id'))
     #un owner puede hacer varios comentarios, pero 1 comentario le pertenece a un mismo owner
@@ -185,20 +189,22 @@ class Comment(db.Model):
             "count_rating": self.count_rating,
             "id_buddy": self.id_buddy,
             "id_owner": self.id_owner,
+            "created_at": self.created_at,
         }
 
 class Reservation(db.Model):
     __tablename__ = 'reservation'
     id = db.Column(db.Integer, primary_key=True)
     # id = db.Column(db.String(255), primary_key = True)
-    reservation_date = db.Column(db.String(20))
-    reservation_service = db.Column(db.String(10))
-    reservation_state = db.Column(db.String(10))
+    reservation_date = db.Column(db.String(35))
+    reservation_service = db.Column(db.String(35))
+    reservation_state = db.Column(db.String(35))
+    created_at = db.Column(db.DateTime(), default=datetime.datetime.now())
     id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.user_id'))
     id_owner = db.Column(db.String(255), db.ForeignKey ('owner.user_id'))
     #created_at = db.Column(db.DateTime, default=datetime.datetime.now())
     
-    def __init__(self, id_buddy, id_owner, reservation_date, reservation_service, reservation_state):
+    def __init__(self, id_buddy, id_owner,reservation_date, reservation_service, reservation_state):
         # self.id = shortuuid.uuid(),
         self.reservation_date = reservation_date,
         self.reservation_service = reservation_service,
@@ -216,5 +222,6 @@ class Reservation(db.Model):
             "id_owner": self.id_owner,
             "reservation_date": self.reservation_date,
             "reservation_service": self.reservation_service,
-            "reservation_state": self.reservation_state
+            "reservation_state": self.reservation_state,
+            "created_at": self.created_at,
         }
