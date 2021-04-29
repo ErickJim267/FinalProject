@@ -1,14 +1,16 @@
 """empty message
-Revision ID: d4167501dbe9
+
+Revision ID: 286c081c36ee
 Revises: 
-Create Date: 2021-04-27 11:04:58.350091
+Create Date: 2021-04-29 10:12:05.337876
+
 """
 from alembic import op
 import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd4167501dbe9'
+revision = '286c081c36ee'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -43,32 +45,30 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('buddy',
-    sa.Column('id', sa.String(length=255), nullable=False),
+    sa.Column('user_id', sa.String(length=255), nullable=False),
     sa.Column('service', sa.String(length=30), nullable=True),
-    sa.Column('user_id', sa.String(length=255), nullable=True),
     sa.Column('other_skills', sa.String(length=100), nullable=True),
     sa.Column('size_accepted', sa.String(length=10), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('user_id')
     )
     op.create_table('owner',
-    sa.Column('id', sa.String(length=255), nullable=False),
-    sa.Column('user_id', sa.String(length=255), nullable=True),
+    sa.Column('user_id', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('user_id')
     )
     op.create_table('comment',
-    sa.Column('id', sa.String(length=255), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('comment_body', sa.Text(), nullable=True),
     sa.Column('count_rating', sa.Integer(), nullable=True),
     sa.Column('id_buddy', sa.String(length=255), nullable=True),
     sa.Column('id_owner', sa.String(length=255), nullable=True),
-    sa.ForeignKeyConstraint(['id_buddy'], ['buddy.id'], ),
-    sa.ForeignKeyConstraint(['id_owner'], ['owner.id'], ),
+    sa.ForeignKeyConstraint(['id_buddy'], ['buddy.user_id'], ),
+    sa.ForeignKeyConstraint(['id_owner'], ['owner.user_id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('pet',
-    sa.Column('id', sa.String(length=255), nullable=False),
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('pet_name', sa.String(length=30), nullable=False),
     sa.Column('owner_id', sa.String(length=255), nullable=False),
     sa.Column('specie', sa.String(length=10), nullable=True),
@@ -79,19 +79,18 @@ def upgrade():
     sa.Column('vaccinated', sa.Boolean(), nullable=True),
     sa.Column('dewormed', sa.Boolean(), nullable=True),
     sa.Column('personality', sa.String(length=150), nullable=True),
-    sa.ForeignKeyConstraint(['owner_id'], ['owner.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('pet_name')
+    sa.ForeignKeyConstraint(['owner_id'], ['owner.user_id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('reservation',
-    sa.Column('id', sa.String(length=255), nullable=False),
-    sa.Column('id_buddy', sa.String(length=255), nullable=True),
-    sa.Column('id_owner', sa.String(length=255), nullable=True),
+    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('reservation_date', sa.String(length=20), nullable=True),
     sa.Column('reservation_service', sa.String(length=10), nullable=True),
     sa.Column('reservation_state', sa.String(length=10), nullable=True),
-    sa.ForeignKeyConstraint(['id_buddy'], ['buddy.id'], ),
-    sa.ForeignKeyConstraint(['id_owner'], ['owner.id'], ),
+    sa.Column('id_buddy', sa.String(length=255), nullable=True),
+    sa.Column('id_owner', sa.String(length=255), nullable=True),
+    sa.ForeignKeyConstraint(['id_buddy'], ['buddy.user_id'], ),
+    sa.ForeignKeyConstraint(['id_owner'], ['owner.user_id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

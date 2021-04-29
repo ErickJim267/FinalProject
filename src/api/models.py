@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import safe_str_cmp  
+import shortuuid    
 
 db = SQLAlchemy()
 
@@ -19,12 +20,12 @@ class User(db.Model):
     profile_photo = db.Column(db.String(100), nullable=True)
     about_me_short = db.Column(db.String(100), nullable=True)
     about_me_long = db.Column(db.Text, nullable=True)
-    addresses = db.relationship('Address', backref = 'User', lazy = True)
-    buddy = db.relationship('Buddy', backref = 'User', uselist=False)
-    owner = db.relationship('Owner', backref = 'User', uselist=False)
+    addresses = db.relationship('Address', backref = 'user', lazy = True)
+    buddy = db.relationship('Buddy', backref = 'user', uselist=False)
+    owner = db.relationship('Owner', backref = 'user', uselist=False)
 
     def __repr__(self):
-        return '<User %r>' % self.id
+        return '<User %r>' % self.name
 
     def check_password(self, password):
         return safe_str_cmp(password, self.password)
@@ -42,8 +43,10 @@ class User(db.Model):
             "is_active": self.is_active,
             "profile_photo": self.profile_photo,
             "about_me_short": self.about_me_short,
-            "about_me_long": self.about_me_long
-            # "addresses": list(map(lambda address:address.serialize(),self.addresses))
+            "about_me_long": self.about_me_long,
+            "addresses": list(map(lambda location: location.to_dict(), self.addresses))
+            #"buddy": list(map(lambda budd: budd.to_dict(), self.buddy))
+            # "owner": list(map(lambda owne: owne.to_dict(), self.owner))
             # do not serialize the password, its a security breach
         }
 
@@ -62,7 +65,7 @@ class Address(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "user_id": self.user_id,
+            # "user_id": self.user_id,
             "exact_address": self.exact_address,
             "provincia": self.provincia,
             "canton": self.canton,
@@ -71,9 +74,9 @@ class Address(db.Model):
 
 class Owner(db.Model):
     __tablename__ = 'owner'
-    id = db.Column(db.String(255), primary_key = True)
-    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
-    pets = db.relationship('Pet', backref='person', lazy = True)
+    # id = db.Column(db.String(255), primary_key = True)
+    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'), primary_key = True)
+    pets = db.relationship('Pet', backref='owner', lazy = True)
     comments = db.relationship('Comment', backref = 'owner', lazy = True)
     reservations = db.relationship('Reservation', backref = 'owner', lazy = True)
 
@@ -82,15 +85,18 @@ class Owner(db.Model):
     
     def to_dict(self):
         return {
-            "id": self.id,
-            "user_id": self.user_id
+            # "id": self.id,
+            "user_id": self.user_id,
+            "pets": list(map(lambda pet: pet.to_dict(), self.pets)),
+            "comments": list(map(lambda comment: comment.to_dict(), self.comments)),
+            "reservations": list(map(lambda reservation: reservation.to_dict(), self.reservations))
         }
     
 class Pet(db.Model):
     __tablename__ = 'pet'
-    id = db.Column(db.String(255), primary_key=True)
-    pet_name = db.Column(db.String(30),unique=True, nullable=False)
-    owner_id = db.Column(db.String(255), db.ForeignKey('owner.id'), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    pet_name = db.Column(db.String(30), nullable=False)
+    owner_id = db.Column(db.String(255), db.ForeignKey('owner.user_id'), nullable=False)
     specie = db.Column(db.String(10))
     size = db.Column(db.String(10))
     activity = db.Column(db.String(10))
@@ -101,14 +107,13 @@ class Pet(db.Model):
     personality = db.Column(db.String(150))
     
     def __repr__(self):
-        return '<Pet %r>' % self.name
+        return '<Pet %r>' % self.pet_name
     
     def to_dict(self):
         return {
-            "id": self.id,
+            # "id": self.id,
             "pet_name": self.pet_name,
-            "owner_id": self.owner_id,
-            "owner": self.owner,
+            # "owner_id": self.owner_id,
             "specie": self.specie,
             "size": self.size,
             "activity": self.activity,
@@ -122,9 +127,9 @@ class Pet(db.Model):
 
 class Buddy(db.Model):
     __tablename__ = 'buddy'
-    id = db.Column(db.String(255), primary_key=True)
+    # id = db.Column(db.String(255), primary_key=True)
+    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'), primary_key=True)
     service = db.Column(db.String(30), nullable=True)
-    user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
     other_skills = db.Column(db.String(100), nullable=True)
     size_accepted = db.Column(db.String(10), nullable=True)
     comments = db.relationship('Comment', backref = 'buddy', lazy = True)
@@ -135,22 +140,40 @@ class Buddy(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
+            # "id": self.id,
+            # "user_id": self.user_id,
             "service": self.service,
-            "user_id": self.user_id,
+            "other_skills": self.other_skills,
+            "size_accepted": self.size_accepted,
+            "comments": list(map(lambda comment: comment.to_dict(), self.comments)),
+            "reservations": list(map(lambda reservation: reservation.to_dict(), self.reservations))
+        }
+        
+    def to_join_dict(self):
+        return {
+            "service": self.service,
             "other_skills": self.other_skills,
             "size_accepted": self.size_accepted
         }
 
 class Comment(db.Model):
     __tablename__ = 'comment'
-    id = db.Column(db.String(255), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    # id = db.Column(db.String(255), primary_key=True)
     comment_body= db.Column(db.Text)
     count_rating= db.Column(db.Integer)
-    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.id'))
-    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.id'))
+    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.user_id'))
+    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.user_id'))
     #un owner puede hacer varios comentarios, pero 1 comentario le pertenece a un mismo owner
     #un buddy tiene muchos comentarios, pero un buddy sólo le pertenece 1 comentario
+    
+    def __init__(self, comment_body, count_rating, id_buddy, id_owner):
+        # self.id = shortuuid.uuid(),
+        self.reservation_date = reservation_date,
+        self.reservation_service = reservation_service,
+        self.reservation_state = reservation_state,
+        self.id_buddy = id_buddy,
+        self.id_owner = id_owner
 
     def __repr__(self):
         return '<Comment %r>' % self.id
@@ -166,13 +189,22 @@ class Comment(db.Model):
 
 class Reservation(db.Model):
     __tablename__ = 'reservation'
-    id = db.Column(db.String(255), primary_key = True)
-    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.id'))
-    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    # id = db.Column(db.String(255), primary_key = True)
     reservation_date = db.Column(db.String(20))
     reservation_service = db.Column(db.String(10))
     reservation_state = db.Column(db.String(10))
+    id_buddy = db.Column(db.String(255), db.ForeignKey ('buddy.user_id'))
+    id_owner = db.Column(db.String(255), db.ForeignKey ('owner.user_id'))
     #created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    
+    def __init__(self, id_buddy, id_owner, reservation_date, reservation_service, reservation_state):
+        # self.id = shortuuid.uuid(),
+        self.reservation_date = reservation_date,
+        self.reservation_service = reservation_service,
+        self.reservation_state = reservation_state,
+        self.id_buddy = id_buddy,
+        self.id_owner = id_owner
 
     def __repr__(self):
         return '<Reservation %r>' % self.id

@@ -4,16 +4,12 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 import os
 import shortuuid
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Owner, Buddy
+from api.models import db, User, Owner, Buddy, Address, Reservation, Comment, Pet
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 
 api = Blueprint('api', __name__)
-
-# @api.route('/token', methods=['POST'])
-# def handle_token():
-#    return jsonify(response_body), 200
 
 @api.route('/register', methods=['POST'])
 def register():
@@ -76,46 +72,49 @@ def create_token():
         return jsonify({"msg": "Invalidate email or password"})
     else:
         # create a new token with user_id
-        access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
+        access_token = create_access_token(identity=user)
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
 @api.route("/buddy", methods=["GET"])
 def get_all_buddy():
-    buddy = Buddy.query.all()
-    users = User.query.filter_by(user_role="buddy").all
-    
-    # db.session.query(Reclamo, Servicio, Cliente, Estado).\
-    # join(Reclamo.servicio, Reclamo.cliente, Reclamo.estado).\
-    # all()
-    
-    # db.session.query(Reclamo, Servicio, Cliente, Estado).\
-    # join(Reclamo.servicio, Reclamo.cliente, Reclamo.estado).\
-    # filter(Estado.id == 1).\
-    # all()
-
-    all_users = list(map(lambda user: user.to_dict(), users))
-    all_user
-    
-
-    if all_users is None:
-        return jsonify('No existing users yet!'),200
+    result = db.session.query(User, Buddy).join(User.buddy).all()
+   
+    if result is None:
+        return jsonify({"msg": 'No existing Buddys yet!'}), 409
     else:
-        return jsonify(all_users), 200
-
-
+        buddy_content = [{ "buddy": dict(user.to_dict(), **buddy.to_dict()) } for user, buddy in result]
+        return jsonify(buddy_content), 200
     
-# def post(self):
-#     data = request.get_json()
-#     film_dict = film_schema.load(data)
-#     film = Film(title=film_dict['title'],
-#                 length=film_dict['length'],
-#                 year=film_dict['year'],
-#                 director=film_dict['director']
-#     )
-#     for actor in film_dict['actors']:
-#         film.actors.append(Actor(actor['name']))
-#     film.save()
-#     resp = film_schema.dump(film)
-#     return resp, 201
+@api.route("/owner", methods=["GET"])
+def get_all_owner():
+    result = db.session.query(User, Owner).join(User.owner).all()
+   
+    if result is None:
+        return jsonify({"msg": 'No existing Buddys yet!'}), 409
+    else:
+        # print(result)
+        owner_content = [{ "owner": dict(user.to_dict(), **owner.to_dict()) } for user, owner in result]
+        return jsonify(owner_content), 200
+
+@api.route("/reservation", methods=["POST"])
+def add_reservation():
+    # _id = request.json.get('id', None)
+    id_owner = request.json.get('id_owner', None)
+    id_buddy = request.json.get('id_buddy', None)
+    reservation_date = request.json.get('reservation_date', None)
+    reservation_service = request.json.get('reservation_service', None)
+    
+    # if _id is None:
+    #     return 'You need to specify the password', 400
+    if reservation_date is None:
+        return 'You need to specify the reservation date', 400
+    if reservation_service is None:
+        return 'You need to specify a service', 400
+
+    new_reservation = Reservation(id_owner=id_owner, id_buddy=id_buddy, reservation_date=reservation_date, reservation_service=reservation_service, reservation_state=False)
+    db.session.add(new_reservation)
+    db.session.commit()
+       
+    return jsonify({"msg" : "Your reservation added successfully!"}), 200
   
 
