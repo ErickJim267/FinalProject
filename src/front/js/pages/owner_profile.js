@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Col, Card, CardDeck } from "react-bootstrap";
 import "../../styles/owner_profile.scss";
+import PropTypes from "prop-types";
 
-export const Owner_profile = () => {
+const Owner_profile = () => {
+	const [ownerInfo, setOwnerInfo] = useState("");
+	console.log(ownerInfo);
+	const [cuidados, setCuidados] = useState("");
+	console.log(cuidados);
+	const [personalidad, setPersonalidad] = useState("");
+	console.log(personalidad);
+	const [petInfo, setPetInfo] = useState("");
+	console.log(petInfo);
+
 	return (
-		<div className="profileCont">
+		<div id="profileCont">
 			<Row>
 				<Col md={9}>
 					<>
@@ -31,9 +41,13 @@ export const Owner_profile = () => {
 						/>
 						<Card.Body>
 							<Card.Text>
-								<div>nombre del dueño</div>
-								<div>info</div>
-								<div>info</div>
+								<div>
+									<div value={ownerInfo} onChange={e => set(e.target.value)}>
+										<li value="Nombre">Nombre</li>
+										<li value="Dirección">Dirección</li>
+										<li value="Teléfono">Teléfono</li>
+									</div>
+								</div>
 							</Card.Text>
 							{/*<Button variant="primary">Añade una reservación</Button>*/}
 						</Card.Body>
@@ -41,73 +55,48 @@ export const Owner_profile = () => {
 				</Col>
 			</Row>
 			{/*Inicia segundo Row para otras fotos y detalles de verificación*/}
-			<div className="cardDeck" />
-			<Row>
-				<Col md={12}>
-					<CardDeck>
-						<Card>
-							<Card.Img
-								variant="top"
-								src="https://static.fjcdn.com/large/pictures/7a/b1/7ab15d_4424197.jpg"
-								className="imgContainer"
-							/>
-							<Card.Body>
-								<Card.Title>Cuidados especiales</Card.Title>
-								<Card.Text>
-									<ul>
-										<li>Sin fotos</li>
-										<li>No intentar hacerlo reir</li>
-										<li>No decirle lindo</li>
-										<li>Text here</li>
-										<li>Text here</li>
-										<li>Text here</li>
-									</ul>
-								</Card.Text>
-							</Card.Body>
-						</Card>
-						<Card>
-							<Card.Img
-								variant="top"
-								src="https://ep01.epimg.net/verne/imagenes/2019/05/17/articulo/1558087739_432602_1558090295_noticia_normal.jpg"
-								className="imgContainer"
-							/>
-							<Card.Body>
-								<Card.Title>Mi personalidad</Card.Title>
-								<Card.Text>
-									<ul>
-										<li>Todo me aburre</li>
-										<li>Quiero tranquilidad</li>
-										<li>no me gusta jugar</li>
-										<li>No me gusta tener vecinos</li>
-										<li>No me gusta nada</li>
-										<li>No quiero nada</li>
-									</ul>
-								</Card.Text>
-							</Card.Body>
-						</Card>
-						<Card>
-							<Card.Img
-								variant="top"
-								src="https://static.dw.com/image/18116106_401.jpg"
-								className="imgContainer"
-							/>
-							<Card.Body>
-								<Card.Title>Lo que debes saber de mí</Card.Title>
-								<Card.Text>
-									<ul>
-										<li>No tengo enfermedades</li>
-										<li>No tengo operaciones</li>
-										<li>No tengo alergias</li>
-										<li>No tengo chip</li>
-										<li>Solo castracion</li>
-										<li>Text here</li>
-									</ul>
-								</Card.Text>
-							</Card.Body>
-						</Card>
-					</CardDeck>
+			<Row id="cardDeck">
+				<Col>
+					<div>
+						<img
+							src="https://i2.wp.com/hipertextual.com/wp-content/uploads/2019/05/hipertextual-muere-grumpy-cat-gata-que-impulso-miles-memes-internet-2019278176.jpg?fit=1600%2C881&ssl=1"
+							className="imgCont"
+						/>
+						<div value={cuidados} onChange={e => setCuidados(e.target.value)}>
+							<li hidden>Cuidados especiales</li>
+							<li value="cuidado1">Cuidados</li>
+							<li value="cuidado2">Cuidados</li>
+							<li value="cuidado3">Cuidados</li>
+						</div>
+					</div>
+				</Col>
+				<Col>
+					<div>
+						<img src="https://static.dw.com/image/18116106_401.jpg" className="imgCont" />
+						<div value={personalidad} onChange={e => setPersonalidad(e.target.value)}>
+							<li hidden>Mi personalidad</li>
+							<li value="personalidad1">personalidad</li>
+							<li value="personalidad2">personalidad</li>
+							<li value="personalidad3">personalidad</li>
+						</div>
+					</div>
+				</Col>
+				<Col>
+					<div>
+						<img
+							src="https://ep01.epimg.net/verne/imagenes/2019/05/17/articulo/1558087739_432602_1558090295_noticia_normal.jpg"
+							className="imgCont"
+						/>
+						<div value={petInfo} onChange={e => setPetInfo(e.target.value)}>
+							<li hidden>Lo que debes saber de mí</li>
+							<li value="petInfo1">Info</li>
+							<li value="petInfo2">Info</li>
+							<li value="petInfo3">Info</li>
+						</div>
+					</div>
 				</Col>
 			</Row>
 		</div>
 	);
 };
+export default Owner_profile;

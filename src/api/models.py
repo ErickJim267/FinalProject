@@ -16,7 +16,7 @@ class User(db.Model):
     birth_date = db.Column(db.String(30), nullable = True)
     user_role = db.Column(db.String(10), nullable = False)
     is_active = db.Column(db.Boolean(), nullable=False)
-    profile_photo = db.Column(db.String(100), nullable=True)
+    user_photo = db.Column(db.String(100), nullable=True)
     about_me_short = db.Column(db.String(100), nullable=True)
     about_me_long = db.Column(db.Text, nullable=True)
     addresses = db.relationship('Address', backref = 'User', lazy = True)
@@ -71,9 +71,9 @@ class Owner(db.Model):
     __tablename__ = 'owner'
     id = db.Column(db.String(255), primary_key = True)
     user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
-    pets = db.relationship('Pet', backref='person', lazy = True)
-    comments = db.relationship('Comment', backref = 'owner', lazy = True)
-    reservations = db.relationship('Reservation', backref = 'owner', lazy = True)
+    pets = db.relationship('Pet', backref='person', lazy = True, cascade = 'all, delete-orphans')
+    comments = db.relationship('Comment', backref = 'owner', lazy = True, cascade = 'all, delete-orphans')
+    reservations = db.relationship('Reservation', backref = 'owner', lazy = True, cascade = 'all, delete-orphans')
 
     def __repr__(self):
         return '<Owner %r>' % self.user_id
@@ -88,6 +88,7 @@ class Pet(db.Model):
     __tablename__ = 'pet'
     id = db.Column(db.String(255), primary_key=True)
     pet_name = db.Column(db.String(30),unique=True, nullable=False)
+    pet_photo = db.Column(db.String(100), nullable=True)
     owner_id = db.Column(db.String(255), db.ForeignKey('owner.id'), nullable=False)
     specie = db.Column(db.String(10))
     size = db.Column(db.String(10))
@@ -125,8 +126,8 @@ class Buddy(db.Model):
     user_id = db.Column(db.String(255), db.ForeignKey ('user.id'))
     other_skills = db.Column(db.String(100), nullable=True)
     size_accepted = db.Column(db.String(10), nullable=True)
-    comments = db.relationship('Comment', backref = 'buddy', lazy = True)
-    reservations = db.relationship('Reservation', backref = 'buddy', lazy = True)
+    comments = db.relationship('Comment', backref = 'buddy', lazy = True, cascade = 'all, delete-orphans')
+    reservations = db.relationship('Reservation', backref = 'buddy', lazy = True, cascade = 'all, delete-orphans')
 
     def __repr__(self):
         return '<Buddy %r>' % self.user_id

@@ -13,6 +13,13 @@ const FormSearch = () => {
 	// };
 	const [provincia, setProvincia] = useState("");
 	console.log(provincia);
+	const [servicio, setServicio] = useState("");
+	console.log(servicio);
+	const [tipo, setTipo] = useState("");
+	console.log(tipo);
+	const [peso, setPeso] = useState("");
+	console.log(peso);
+
 	return (
 		// Filtros de busqueda
 		<form className="form-search mt-5 py-4">
@@ -37,7 +44,11 @@ const FormSearch = () => {
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
-					<select id="selectService" className="form-control">
+					<select
+						value={servicio}
+						onChange={e => setServicio(e.target.value)}
+						id="selectService"
+						className="form-control">
 						<option hidden>Seleccionar Servicio</option>
 						<option value="Alojamiento">Alojamiento</option>
 						<option value="Paseo">Paseo</option>
@@ -54,7 +65,11 @@ const FormSearch = () => {
 					/>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
-					<select id="selectService" className="form-control">
+					<select
+						value={tipo}
+						onChange={e => setTipo(e.target.value)}
+						id="selectService"
+						className="form-control">
 						<option hidden>Tipo de Mascota</option>
 						<option value="Perro">Perro</option>
 						<option value="Gato">Gato</option>
@@ -62,8 +77,12 @@ const FormSearch = () => {
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
-					<select id="selectService" className="form-control">
-						<option hidden>Tamaño de la mascota (kg)</option>
+					<select
+						value={peso}
+						onChange={e => setPeso(e.target.value)}
+						id="selectService"
+						className="form-control">
+						<option hidden>Tamaño (kg)</option>
 						<option value="1-10">1-10</option>
 						<option value="11-25">11-25</option>
 						<option value="26-45">26-45</option>

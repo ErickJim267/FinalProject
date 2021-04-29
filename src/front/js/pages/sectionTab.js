@@ -90,7 +90,7 @@ const SectionTab = () => {
 									<div>
 										<img src={buddy3} />
 									</div>
-									Revisa las reserviaciones y elige según tu disponibilidad
+									Revisa reserviaciones según tu disponibilidad
 								</div>
 							</div>
 						</Tab.Pane>
