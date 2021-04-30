@@ -19,6 +19,7 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config["JWT_SECRET_KEY"] = os.environ.get('FLASK_APP_KEY', 'sample key')
+CORS(app)
 jwt = JWTManager(app)
 
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET', 'sample key') #Change this

@@ -13,6 +13,7 @@ export function Login() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		if (!validateForm(e)) return;
+		actions.login(email, password);
 	};
 	const validateForm = e => {
 		if (email.trim() === "") {

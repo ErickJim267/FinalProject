@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			token: ""
+			token: localStorage.getItem("token") || ""
 		},
 		actions: {
 			registerUser: async user => {
@@ -62,9 +62,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-				const resp = await fetch("https://3001-azure-llama-h7qxg6ja.ws-us04.gitpod.io/api/token", opts)
+				const resp = await fetch("https://3001-amethyst-pig-gbpf0qq2.ws-us04.gitpod.io/api/token", opts)
 					.then(response => response.json())
-					.then(data => setStore({ token: data.token }));
+					.then(data => {
+						console.log(data);
+						localStorage.setItem("token", data.token);
+						setStore({ token: data.token });
+					});
 			},
 			getMessage: () => {
 				// fetching data from the backend

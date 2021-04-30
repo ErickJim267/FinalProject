@@ -6,6 +6,8 @@ export function OwnerForm() {
 	console.log(nombre);
 	const [apellidos, setApellidos] = useState("");
 	console.log(apellidos);
+	const [teléfono, setTeléfono] = useState("");
+	console.log(teléfono);
 	const [mes, setMes] = useState("");
 	console.log(mes);
 	const [día, setDía] = useState("");
@@ -14,24 +16,31 @@ export function OwnerForm() {
 	console.log(año);
 	const [provincia, setProvincia] = useState("");
 	console.log(provincia);
+	const [dirección, setDirección] = useState("");
+	console.log(dirección);
 	const [nombrePet, setNombrePet] = useState("");
 	console.log(nombrePet);
+	const [raza, setRaza] = useState("");
+	console.log(raza);
 
 	return (
 		<div>
 			<Card style={{ width: "50rem", margin: "auto" }}>
 				<Card.Body>
 					<Card.Header>Crear perfil - Dueño</Card.Header>
-
 					<br />
-
+					<Form>
+						<Form.Group>
+							<Form.File id="exampleFormControlFile1" label="Example file input" />
+						</Form.Group>
+					</Form>
+					<br />
 					<Card.Text>
 						<Form.Group controlId="formBasicEmail">
 							<Form.Label>Nombre</Form.Label>
 							<Form.Control
-								type="name"
+								type="text"
 								placeholder="Enter name"
-								value="nombre"
 								onChange={e => setNombre(e.target.value)}
 							/>
 						</Form.Group>
@@ -41,7 +50,6 @@ export function OwnerForm() {
 							<Form.Control
 								type="lastname"
 								placeholder="Enter Lastname"
-								value="apellidos"
 								onChange={e => setApellidos(e.target.value)}
 							/>
 
@@ -52,7 +60,6 @@ export function OwnerForm() {
 								<Form.Control
 									type="telephone"
 									placeholder="+506 ____-____"
-									value="teléfono"
 									onChange={e => setTeléfono(e.target.value)}
 								/>
 							</Form.Group>
@@ -65,7 +72,6 @@ export function OwnerForm() {
 									<Form.Control
 										as="select"
 										defaultValue="Choose a month"
-										value="mes"
 										onChange={e => setMes(e.target.value)}>
 										<option value="01">Ene</option>
 										<option value="02">Feb</option>
@@ -86,7 +92,6 @@ export function OwnerForm() {
 									<Form.Control
 										as="select"
 										defaultValue="Choose a month"
-										value="día"
 										onChange={e => setDía(e.target.value)}>
 										<option value="1">1</option>
 										<option value="2">2</option>
@@ -124,31 +129,26 @@ export function OwnerForm() {
 								<Form.Group as={Col} controlId="formGridYear">
 									<Form.Label>Año</Form.Label>
 
-									<Form.Control value="año" onChange={e => setAño(e.target.value)} />
+									<Form.Control onChange={e => setAño(e.target.value)} />
 								</Form.Group>
 							</Form.Row>
 						</Form.Group>
 						<Form.Group controlId="exampleForm.ControlSelect1">
 							<Form.Label>Provincia</Form.Label>
-							<Form.Control as="select" value="provincia" onChange={e => setProvincia(e.target.value)}>
+							<Form.Control as="select" onChange={e => setProvincia(e.target.value)}>
+								<option hidden>Provincia</option>
 								<option value="Alajuela">Alajuela</option>
 								<option value="Cartago">Cartago</option>
 								<option value="San Jose">San Jose</option>
 								<option value="Heredia">Heredia</option>
 								<option value="Limon">Limon</option>
 								<option value="Guanacaste">Guanacaste</option>
+								<option value="Puntarenas">Puntarenas</option>
 							</Form.Control>
-
 							<br />
-
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label>Dirección</Form.Label>
-								<Form.Control
-									as="textarea"
-									rows={3}
-									value="dirección"
-									onChange={e => setDirección(e.target.value)}
-								/>
+								<Form.Control as="textarea" rows={3} onChange={e => setDirección(e.target.value)} />
 							</Form.Group>
 						</Form.Group>
 
@@ -160,43 +160,34 @@ export function OwnerForm() {
 							<Form.Control
 								type="petname"
 								placeholder="Enter pet's name"
-								value="nombrePet"
 								onChange={e => setNombrePet(e.target.value)}
 							/>
 						</Form.Group>
-
-						<Form.Label style={{ marginBottom: "20px" }} value="tipo">
-							Tipo de mascota
-						</Form.Label>
-
+						<Form.Label style={{ marginBottom: "20px" }}>Tipo de mascota</Form.Label>
 						{["checkbox"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
-								<Form.Check inline label="Cat" type={type} id={`inline-${type}-1`} />
-								<Form.Check inline label="Dog" type={type} id={`inline-${type}-2`} />
-								<Form.Check inline label="Other" type={type} id={`inline-${type}-3`} />
+								<Form.Check inline label="Cat" type={type} id={`inline-${type}-1`} value="check1" />
+								<Form.Check inline label="Dog" type={type} id={`inline-${type}-2`} value="check2" />
 							</div>
 						))}
-
 						<br />
-
 						<Form.Group controlId="formBasicpetname">
 							<Form.Label>Raza de la mascota</Form.Label>
-							<Form.Control type="petname" placeholder="Enter pet's race" />
+							<Form.Control
+								type="petname"
+								placeholder="Enter pet's breed"
+								onChange={e => setRaza(e.target.value)}
+							/>
 						</Form.Group>
-
 						<br />
-
 						<Form.Label style={{ marginBottom: "20px" }}>Género</Form.Label>
-
 						{["radio"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
 								<Form.Check inline label="Male" type={type} id={`inline-${type}-7`} />
 								<Form.Check inline label="Female" type={type} id={`inline-${type}-8`} />
 							</div>
 						))}
-
 						<br />
-
 						<Form.Group controlId="exampleForm.SelectCustomSizeSm">
 							<Form.Label>Edad</Form.Label>
 							<Form.Control as="select" size="sm" custom>
@@ -207,11 +198,9 @@ export function OwnerForm() {
 								<option>+15 años </option>
 							</Form.Control>
 						</Form.Group>
-
 						<Form>
 							<Form>
 								<Form.Label style={{ marginBottom: "20px" }}>Peso</Form.Label>
-
 								{["checkbox"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
 										<Form.Check inline label="2-10 lbs" type={type} id={`inline-${type}-1`} />
@@ -219,7 +208,6 @@ export function OwnerForm() {
 										<Form.Check inline label="+25 lbs" type={type} id={`inline-${type}-3`} />
 									</div>
 								))}
-
 								<br />
 							</Form>
 						</Form>

@@ -8,7 +8,6 @@ from api.models import db, User, Owner, Buddy
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
-
 api = Blueprint('api', __name__)
 
 # @api.route('/token', methods=['POST'])
@@ -76,7 +75,7 @@ def create_token():
         return jsonify({"msg": "Invalidate email or password"})
     else:
         # create a new token with user_id
-        access_token = create_access_token(identity=user, expires_delta=timedelta(hours=80))
+        access_token = create_access_token(identity=user)
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
 

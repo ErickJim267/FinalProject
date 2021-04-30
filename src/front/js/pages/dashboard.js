@@ -25,11 +25,11 @@ export function Dashboard() {
 
 			<br />
 
-			<h6>Welcome User</h6>
+			<h6>Bienvenido!</h6>
 
 			<br />
-			<BuddyForm />
-			{/* <OwnerForm /> */}
+			{/* <BuddyForm /> */}
+			<OwnerForm />
 		</div>
 	);
 }
