@@ -21,9 +21,9 @@ class User(db.Model):
     user_photo = db.Column(db.String(100), nullable=True)
     about_me_short = db.Column(db.String(100), nullable=True)
     about_me_long = db.Column(db.Text, nullable=True)
-    addresses = db.relationship('Address', backref = 'user', lazy = True)
-    buddy = db.relationship('Buddy', backref = 'user', uselist=False)
-    owner = db.relationship('Owner', backref = 'user', uselist=False)
+    addresses = db.relationship('Address', backref = 'user', lazy = True, cascade='all, delete-orphan')
+    buddy = db.relationship('Buddy', backref = 'user', uselist=False, cascade='all, delete-orphan')
+    owner = db.relationship('Owner', backref = 'user', uselist=False, cascade='all, delete-orphan')
 
     def __repr__(self):
         return '<User %r>' % self.name
