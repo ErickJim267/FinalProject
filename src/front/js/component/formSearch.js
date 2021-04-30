@@ -11,14 +11,6 @@ const FormSearch = () => {
 	// 	setStartDate(start);
 	// 	setEndDate(end);
 	// };
-	const [provincia, setProvincia] = useState("");
-	console.log(provincia);
-	const [servicio, setServicio] = useState("");
-	console.log(servicio);
-	const [tipo, setTipo] = useState("");
-	console.log(tipo);
-	const [peso, setPeso] = useState("");
-	console.log(peso);
 
 	return (
 		// Filtros de busqueda
@@ -26,33 +18,24 @@ const FormSearch = () => {
 			<div className="form-row">
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectLocation">Location</label> */}
-					<select
-						value={provincia}
-						onChange={e => setProvincia(e.target.value)}
-						className="form-control"
-						id="SelectLocation"
-						name="provincia">
-						<option hidden>Seleccionar ubicación</option>
-						<option value="San José">San José</option>
-						<option value="Alajuela">Alajuela</option>
-						<option value="Cartago">Cartago</option>
-						<option value="Heredia">Heredia</option>
-						<option value="Guanacaste">Guanacaste</option>
-						<option value="Puntarenas">Puntarenas</option>
-						<option value="Limón">Limón</option>
+					<select className="form-control" id="SelectLocation" name="provincia">
+						<option hidden>Select to location</option>
+						<option value={1}>San José</option>
+						<option value={2}>Alajuela</option>
+						<option value={3}>Cartago</option>
+						<option value={4}>Heredia</option>
+						<option value={5}>Guanacaste</option>
+						<option value={6}>Puntarenas</option>
+						<option value={7}>Limón</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
-					<select
-						value={servicio}
-						onChange={e => setServicio(e.target.value)}
-						id="selectService"
-						className="form-control">
-						<option hidden>Seleccionar Servicio</option>
-						<option value="Alojamiento">Alojamiento</option>
-						<option value="Paseo">Paseo</option>
-						<option value="Guardería">Guardería</option>
+					<select id="selectService" className="form-control">
+						<option hidden>Service Type</option>
+						<option>Alojamiento</option>
+						<option>Paseo</option>
+						<option>Guardería</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
@@ -65,34 +48,25 @@ const FormSearch = () => {
 					/>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
-					<select
-						value={tipo}
-						onChange={e => setTipo(e.target.value)}
-						id="selectService"
-						className="form-control">
-						<option hidden>Tipo de Mascota</option>
-						<option value="Perro">Perro</option>
-						<option value="Gato">Gato</option>
+					<select id="selectService" className="form-control">
+						<option hidden>Pet Type</option>
+						<option>Alojamiento</option>
+						<option>Paseo</option>
+						<option>Guardería</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
-					<select
-						value={peso}
-						onChange={e => setPeso(e.target.value)}
-						id="selectService"
-						className="form-control">
-						<option hidden>Tamaño (kg)</option>
-						<option value="1-10">1-10</option>
-						<option value="11-25">11-25</option>
-						<option value="26-45">26-45</option>
-						<option value="+45">+45</option>
+					<select id="selectService" className="form-control">
+						<option hidden>Dog size (kg)</option>
+						<option>1-10</option>
+						<option>11-25</option>
+						<option>26-45</option>
+						<option>+45</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
-					<button className="btn btn-info btn-block" value="Filter">
-						Filter
-					</button>
+					<button className="btn btn-info btn-block">Filter</button>
 				</div>
 			</div>
 		</form>

@@ -1,0 +1,84 @@
+Petbnb - porque son mas que una mascota
+
+## Web references
+https://www.rover.com/
+https://petsnflats.com/
+https://www.pawshake.com.au/
+https://www.petbacker.com/
+https://www.snau.es/
+https://gudog.com/
+
+
+## APIS de referencia 
+- https://ubicaciones.paginasweb.cr/
+- mapbox
+- leaflet
+
+## Paleta de color = naranjas #de681f #E67E22
+
+naranja claro = #FAECD6
+fondo = #EBEBEB
+
+Alcance --> Como sabemos que hoy las mascotas son mas que una mascota, sino que hoy forman parte de nuestra familia, hemos pensado en que igual hay que tratarlos como tal...
+
+## Backlog --> funcionalidade de mi proyecto (historias de datos)
+-- Buddy ---
+- Registro de buddy's
+- Formulario de publicación de servicio(perfil del buddy) - Publicar una oferta ahora
+- Mirar notificaciones (Aceptar reservas)
+- Calificación a dueño(solo calificacion - sin comentario)**
+
+-- Dueño --
+- Opción de búsqueda (filtros - navegacion en los perfiles de los buddys)
+- Registro de dueño **
+- Formulario de información dueño y mascota (perfil del dueño y mascota)
+- Contactar o reservar buddy
+- Calificación a buddy(solo calificacion - sin comentario)
+- Notificación (aceptacion o rechazo de su reserva)
+
+-- Pendientes --
+- Pasarela de pagos
+
+
+## User-stories
+
+Buddy = El que brinda los servicios
+Dueño = El dueño
+
+-Como buddy puedo registrarme para formar parte de la comunidad
+-Como buddy puedo loguearse para mirar mi perfil y mis notificaiones de reservas pendientes.
+-Como buddy puedo crear un perfil para brindar mis servicios y sea publicado
+-Como buddy puedo mirar mis notificaciones para aceptar o rechazar una reservación
+-Como buddy puedo calificar para crear rating a los dueños de las mascotas.
+**-Como buddy puedo recuperar mi contraseña para recuperar acesso
+
+-Como dueño puedo buscar en la aplicacion web para mirar los perfiles de los buddys
+-Como dueño puedo registrarme para acceder los servicios de los buddys 
+-Como dueño puedo loguearse para mirar mi perfil y notificaciones 
+***-Como dueño puedo crear un perfil para***
+-Como dueño puedo reservar para obtener los servicios de un buddy
+-Como dueño puedo calificar para crear rating a los buddys.
+-Como dueño puedo mirar mis notificaciones para mirar si mi reservacion fue aceptada o rechazada
+**-Como dueño puedo recuperar mi contraseña para recuperar acesso
+
+
+## To do
+## In-proccess
+## Done
+
+VIEWS PROJECTS
+- HOME
+- LOGIN/REGISTER    
+- SEARCH RESULT PANEL
+- PERFIL BUDDY INFO - VISUALIZACION
+- PERFIL DUEÑO INFO - VISUALIZACION
+- DASHBOARD
+
+
+- Ingresar al repositorio base (ERICK) -
+- Abrir con gitpod (CLONE)
+- Asignarnos una tarea
+- Crear una rama de cada tarea asignada y trabajar en ella
+- Despues de terminada cada tarea hacemos un merge al main
+
+

@@ -21,18 +21,19 @@ export function Register() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		// validar formulario
-		if (!validateForm(e)) return;
+		if(!validateForm(e)) return;
 
 		// Registrar nuevo usuario
 		const id = short.uuid();
 		const user = { id, role, name, lastName, email, password };
 
 		actions.registerUser(user).then(res => {
-			if (res) {
-				//reset formulario
-				resetForm();
-				setAuth(true);
-			}
+            if(res) {
+                //reset formulario
+			    resetForm();
+			    setAuth(true);
+            }
+			
 		});
 	};
 
@@ -99,7 +100,7 @@ export function Register() {
 									size="sm"
 									onClick={e => setRole(e.target.value)}
 									value="owner">
-									Dueño
+									OWNER
 								</Button>
 
 								<Button
@@ -107,12 +108,12 @@ export function Register() {
 									size="sm"
 									onClick={e => setRole(e.target.value)}
 									value="buddy">
-									Buddy
+									BUDDY
 								</Button>
 							</div>
 							<br />
 							<Form.Group controlId="validationCustom01">
-								<Form.Label>Nombre</Form.Label>
+								<Form.Label>Name</Form.Label>
 								<Form.Control
 									required
 									type="name"
@@ -123,7 +124,7 @@ export function Register() {
 							</Form.Group>
 							<br />
 							<Form.Group controlId="formBasiclastname">
-								<Form.Label>Apellidos</Form.Label>
+								<Form.Label>Last Name</Form.Label>
 								<Form.Control
 									required
 									type="lastname"
@@ -135,7 +136,7 @@ export function Register() {
 							</Form.Group>
 							<br />
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>E-mail</Form.Label>
+								<Form.Label>Email address</Form.Label>
 								<Form.Control
 									required
 									type="email"
@@ -158,7 +159,7 @@ export function Register() {
 							</Form.Group>
 							<br />
 							<Form.Group controlId="formBasicconfirmpassword">
-								<Form.Label>Confirmar Password</Form.Label>
+								<Form.Label>Confirm Password</Form.Label>
 								<Form.Control
 									required
 									type="password"
@@ -172,12 +173,12 @@ export function Register() {
 								variant="primary"
 								type="submit"
 								style={{ backgroundColor: "#de681f", border: "none" }}>
-								Registro
+								Register
 							</Button>
 						</Form>
 						<br />
 						<Link to="/login">
-							<p className="text-muted">Ya tiene una cuenta?</p>
+							<p className="text-muted">Have already accont?</p>
 						</Link>
 					</div>
 				</Card.Body>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Card, Col, Button } from "react-bootstrap";
+import { Form, Card, Col } from "react-bootstrap";
 
 export function BuddyForm() {
 	return (

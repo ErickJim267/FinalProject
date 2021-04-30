@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/8f2577961623_.py
-Revision ID: 8f2577961623
-Revises: 
-Create Date: 2021-04-30 01:01:22.509322
-=======
 Revision ID: 286c081c36ee
 Revises: 
 Create Date: 2021-04-29 10:12:05.337876
->>>>>>> login_api:migrations/versions/286c081c36ee_.py
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/8f2577961623_.py
-revision = '8f2577961623'
-=======
 revision = '286c081c36ee'
->>>>>>> login_api:migrations/versions/286c081c36ee_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,11 +28,7 @@ def upgrade():
     sa.Column('birth_date', sa.String(length=30), nullable=True),
     sa.Column('user_role', sa.String(length=10), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
-<<<<<<< HEAD:migrations/versions/8f2577961623_.py
-    sa.Column('user_photo', sa.String(length=100), nullable=True),
-=======
     sa.Column('profile_photo', sa.String(length=100), nullable=True),
->>>>>>> login_api:migrations/versions/286c081c36ee_.py
     sa.Column('about_me_short', sa.String(length=100), nullable=True),
     sa.Column('about_me_long', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
@@ -59,14 +45,8 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('buddy',
-<<<<<<< HEAD:migrations/versions/8f2577961623_.py
-    sa.Column('id', sa.String(length=255), nullable=False),
-    sa.Column('service', sa.String(length=30), nullable=True),
-    sa.Column('user_id', sa.String(length=255), nullable=True),
-=======
     sa.Column('user_id', sa.String(length=255), nullable=False),
     sa.Column('service', sa.String(length=30), nullable=True),
->>>>>>> login_api:migrations/versions/286c081c36ee_.py
     sa.Column('other_skills', sa.String(length=100), nullable=True),
     sa.Column('size_accepted', sa.String(length=10), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
