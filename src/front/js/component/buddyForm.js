@@ -1,9 +1,5 @@
 import React from "react";
-<<<<<<< HEAD
-import { Navbar, Nav, Form, FormControl, Button, Card, Col } from "react-bootstrap";
-=======
 import { Form, Card, Col, Button } from "react-bootstrap";
->>>>>>> 887c86a33dc70a69db5f219f3dc8e585f88d244f
 
 export function BuddyForm() {
 	return (
