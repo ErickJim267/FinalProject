@@ -21,19 +21,18 @@ export function Register() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		// validar formulario
-		if(!validateForm(e)) return;
+		if (!validateForm(e)) return;
 
 		// Registrar nuevo usuario
 		const id = short.uuid();
 		const user = { id, role, name, lastName, email, password };
 
 		actions.registerUser(user).then(res => {
-            if(res) {
-                //reset formulario
-			    resetForm();
-			    setAuth(true);
-            }
-			
+			if (res) {
+				//reset formulario
+				resetForm();
+				setAuth(true);
+			}
 		});
 	};
 
