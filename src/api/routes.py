@@ -75,6 +75,7 @@ def create_token():
         access_token = create_access_token(identity=user)
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
+## OBTENER TODOS LOS BUDDYS ##
 @api.route("/buddy", methods=["GET"])
 def get_all_buddy():
     result = db.session.query(User, Buddy).join(User.buddy).all()
@@ -84,7 +85,6 @@ def get_all_buddy():
     else:
         buddy_content = [{ "buddy": dict(user.to_dict(), **buddy.to_dict()) } for user, buddy in result]
         return jsonify(buddy_content), 200
-
 
 ## ACTUALIZAR BUDDY ##
 @api.route("/buddy/<string:id>", methods=["PUT"])
@@ -117,7 +117,7 @@ def update_buddy(id):
     if "other_skills" in body:
         buddy.other_skills = body["other_skills"]
     if "user_photo" in body:
-        buddy.user_photo = body["user_photo"]
+        user.user_photo = body["user_photo"]
     
     db.session.add(user)
     db.session.add(buddy)
@@ -126,15 +126,15 @@ def update_buddy(id):
 
     return jsonify({"msg" : "Your user update successfully!"}), 200
 
-
 ## ACTUALIZAR OWNER ##
 @api.route("/owner/<string:id>", methods=["PUT"])
-def update_buddy(id):
+def update_owner(id):
     # result = db.session.query(User, Buddy).join(User.buddy).filter(User.id=id)
     body = request.get_json()
     user = User.query.get(id=id)
     owner = Buddy.query.get(user_id=id)
     address = Address.query.get(user_id=id)
+    pet = Pet.query.get(user_id=id)
 
     if user is None:
         return jsonify({"msg": "User not found"}), 400
@@ -143,22 +143,38 @@ def update_buddy(id):
         user.phone = body["phone"]
     if "birth_date" in body:
         user.birth_date = body["birth_date"]
-    if "provincia" in body:
-        address.provincia = body["provincia"]
-    if "exact_address" in body:
-        address.exact_address = body["exact_address"]
-    if "size_accepted" in body:
-        buddy.size_accepted = body["size_accepted"]
-    if "service" in body:
-        buddy.service = body["service"]
     if "about_me_short" in body:
         user.about_me_short = body["about_me_short"]
     if "about_me_long" in body:
         user.about_me_long = body["about_me_long"]
-    if "other_skills" in body:
-        buddy.other_skills = body["other_skills"]
     if "user_photo" in body:
-        buddy.user_photo = body["user_photo"]
+        user.user_photo = body["user_photo"]
+    if "provincia" in body:
+        address.provincia = body["provincia"]
+    if "exact_address" in body:
+        address.exact_address = body["exact_address"]
+    if "pet_name" in body:
+        pet.pet_name = body["pet_name"]
+    if "specie" in body:
+        pet.specie = body["specie"]
+    if "gender" in body:
+        pet.sex = body["gender"]
+    if "pet_photo" in body:
+        pet.pet_photo = body["pet_photo"]
+    if "breed" in body:
+        pet.breed = body["breed"]
+    if "range_age" in body:
+        pet.range_age = body["range_age"]
+    if "size" in body:
+        pet.size = body["size"]
+    if "vaccinated" in body:
+        pet.vaccinated = body["vaccinated"]
+    if "Dewormed" in body:
+        pet.Dewormed = body["Dewormed"]
+    if "sterilized" in body:
+        pet.sterilized = body["sterilized"]
+    if "personality" in body:
+        pet.personality = body["personality"]
     
     db.session.add(user)
     db.session.add(buddy)
@@ -167,6 +183,7 @@ def update_buddy(id):
 
     return jsonify({"msg" : "Your user update successfully!"}), 200
 
+## OBTENER TODOS LOS OWNERS ##
 @api.route("/owner", methods=["GET"])
 def get_all_owner():
     result = db.session.query(User, Owner).join(User.owner).all()
@@ -178,6 +195,7 @@ def get_all_owner():
         owner_content = [{ "owner": dict(user.to_dict(), **owner.to_dict()) } for user, owner in result]
         return jsonify(owner_content), 200
 
+## AGREGAR RESERVACION ##
 @api.route("/reservation", methods=["POST"])
 def add_reservation():
     # _id = request.json.get('id', None)
@@ -200,6 +218,7 @@ def add_reservation():
 
     return jsonify({"msg" : "Your reservation added successfully!"}), 200
 
+## ACTUALIZAR RESERVACION ##
 @api.route("/reservation/<int:id>", methods=["PUT"])
 def update_reservation(id):
     body=request.get_json()
@@ -224,7 +243,7 @@ def update_reservation(id):
 
     return jsonify({"msg" : "Your reservation update successfully!"}), 200
 
-
+## AGREGAR COMENTARIO ##
 @api.route("/comment", methods=["POST"])
 def add_comment():
     # _id = request.json.get('id', None)
@@ -245,27 +264,3 @@ def add_comment():
     db.session.commit()
 
     return jsonify({"msg" : "Your reservation added successfully!"}), 200
-
-# @api.route("/comment/<int:id>", methods=["PUT"])
-# def update_reservation(id):
-#     body=request.get_json()
-#     reservation = Reservation.query.get(id)
-
-#     if reservation is None:
-#         return jsonify({"msg": "Reservation not found"}), 400
-
-#     if "reservation_date" in body:
-#         reservation.reservation_date = body["reservation_date"]
-#     if "reservation_service" in body:
-#         reservation.reservation_service = body["reservation_service"]
-#     if "provincia" in body:
-#         reservation.provincia = body["provincia"]
-#     if "exact_address" in body:
-#         reservation.exact_address = body["exact_address"]
-#     if "id_buddy" in body:
-#         reservation.id_buddy = body["id_buddy"]
-
-#     db.session.add(reservation)
-#     db.session.commit()
-
-#     return jsonify({"msg" : "Your reservation update successfully!"}), 200

@@ -99,6 +99,8 @@ class Pet(db.Model):
     pet_name = db.Column(db.String(30), nullable=False)
     pet_photo = db.Column(db.String(100), nullable=True)
     owner_id = db.Column(db.String(255), db.ForeignKey('owner.user_id'), nullable=False)
+    breed = db.Column(db.String(50))
+    range_age = db.Column(db.String(30))
     specie = db.Column(db.String(10))
     size = db.Column(db.String(10))
     activity = db.Column(db.String(10))
@@ -124,7 +126,9 @@ class Pet(db.Model):
             "vaccinated": self.vaccinated,
             "dewormed": self.dewormed,
             "personality": self.personality,
-            "pet_photo": self.pet_photo
+            "pet_photo": self.pet_photo,
+            "breed": self.breed,
+            "range_age": self.range_age
         }
 
 
