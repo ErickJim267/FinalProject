@@ -10,9 +10,9 @@ import { Navbar } from "./component/navbar";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
-import { Search } from "./pages/search";
 import { ProfileBuddyView } from "./pages/profileBuddyView";
 import { Owner_profile } from "./pages/owner_profile";
+import Search from "./pages/search";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -41,10 +41,10 @@ const Layout = () => {
 						<Route exact path="/search">
 							<Search />
 						</Route>
-						<Route exact path="/buddy-profile">
+						<Route exact path="/buddy-profile/:id">
 							<ProfileBuddyView />
 						</Route>
-						<Route exact path="/owner-profile">
+						<Route exact path="/owner-profile/:id">
 							{/* vista del perfil del owner */}
 							<Owner_profile />
 						</Route>

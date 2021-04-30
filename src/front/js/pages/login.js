@@ -1,20 +1,31 @@
 import React, { useState, useContext } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export function Login() {
 	const [validated, setValidated] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// const [auth, setAuth] = useState(false);
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 
 	const handleSubmit = e => {
 		e.preventDefault();
 		if (!validateForm(e)) return;
 		actions.login(email, password);
+		resetForm();
+		// .then(res => {
+		// 	if (res) {
+		// 		//reset formulario
+		// 		resetForm();
+		// 		history.push("/dashboard");
+		// 	}
+		// });
 	};
+
 	const validateForm = e => {
 		if (email.trim() === "") {
 			alert("Debe de escribir un email");
@@ -32,6 +43,8 @@ export function Login() {
 		setEmail("");
 		setPassword("");
 	};
+
+	if (store.token && store.token != "" && store.token != undefined) history.push("/dashboard");
 
 	return (
 		<CardGroup>

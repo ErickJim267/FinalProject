@@ -1,6 +1,10 @@
 @import 'variables';
 
-.card { font-size: 14px; }
+.card { 
+    width: 100%;
+    background-color: antiquewhite;
+    font-size: 14px; 
+}
 
 .card-img-profile {
     height: 80px;

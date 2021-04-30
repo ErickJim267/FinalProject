@@ -1,33 +1,36 @@
 import React, { useState } from "react";
 import { Form, Button, Card, Col } from "react-bootstrap";
+import { Context } from "../store/appContext";
+// import PropTypes from "prop-types";
 
 export function OwnerForm() {
-	const [nombre, setNombre] = useState("");
-	console.log(nombre);
-	const [apellidos, setApellidos] = useState("");
-	console.log(apellidos);
-	const [teléfono, setTeléfono] = useState("");
-	console.log(teléfono);
+	const { store, actions } = React.useContext(Context);
+
+	const [nombre, setNombre] = useState(store.userLogged.name);
+	const [apellidos, setApellidos] = useState(store.userLogged.last_name);
+	const [telefono, setTelefono] = useState(store.userLogged.phone);
 	const [mes, setMes] = useState("");
-	console.log(mes);
-	const [día, setDía] = useState("");
-	console.log(día);
+	const [dia, setDia] = useState("");
 	const [año, setAño] = useState("");
-	console.log(año);
-	const [provincia, setProvincia] = useState("");
-	console.log(provincia);
-	const [dirección, setDirección] = useState("");
-	console.log(dirección);
-	const [nombrePet, setNombrePet] = useState("");
-	console.log(nombrePet);
-	const [raza, setRaza] = useState("");
-	console.log(raza);
+	const [provincia, setProvincia] = useState(store.userLogged.addresses[0].provicia);
+	const [direccion, setDireccion] = useState(store.userLogged.addresses[0].exact_address);
+	const [nombrePet, setNombrePet] = useState(store.userLogged.pets[0].pet_name);
+	const [raza, setRaza] = useState(store.userLogged.pets[0].breed);
+	const [especie, setEspecie] = useState(store.userLogged.pets[0].specie);
+	const [genero, setGenero] = useState(store.userLogged.pets[0].sex);
+	const [peso, setPeso] = useState(store.userLogged.pets[0].size);
+	const [vacunado, setVacuna] = useState(store.userLogged.pets[0].vaccinate);
+	const [desparasitado, setDesparasitado] = useState(store.userLogged.pets[0].dewormed);
+	const [descripcion, setDescripcion] = useState(store.userLogged.pets[0].personality);
+	const [edad, setEdad] = useState(store.userLogged.pets[0].range_age);
 
 	return (
 		<div>
 			<Card style={{ width: "50rem", margin: "auto" }}>
 				<Card.Body>
-					<Card.Header>Crear perfil - Dueño</Card.Header>
+					<Card.Header style={{ fontSize: "1.8rem", fontWeight: "600" }}>
+						Complete los datos de su perfil
+					</Card.Header>
 					<br />
 					<Form>
 						<Form.Group>
@@ -41,6 +44,7 @@ export function OwnerForm() {
 							<Form.Control
 								type="text"
 								placeholder="Enter name"
+								value={nombre}
 								onChange={e => setNombre(e.target.value)}
 							/>
 						</Form.Group>
@@ -50,6 +54,7 @@ export function OwnerForm() {
 							<Form.Control
 								type="lastname"
 								placeholder="Enter Lastname"
+								value={apellidos}
 								onChange={e => setApellidos(e.target.value)}
 							/>
 
@@ -60,6 +65,7 @@ export function OwnerForm() {
 								<Form.Control
 									type="telephone"
 									placeholder="+506 ____-____"
+									value={telefono}
 									onChange={e => setTeléfono(e.target.value)}
 								/>
 							</Form.Group>
@@ -135,7 +141,7 @@ export function OwnerForm() {
 						</Form.Group>
 						<Form.Group controlId="exampleForm.ControlSelect1">
 							<Form.Label>Provincia</Form.Label>
-							<Form.Control as="select" onChange={e => setProvincia(e.target.value)}>
+							<Form.Control as="select" onChange={e => setProvincia(e.target.value)} value={provincia}>
 								<option hidden>Provincia</option>
 								<option value="Alajuela">Alajuela</option>
 								<option value="Cartago">Cartago</option>
@@ -148,7 +154,12 @@ export function OwnerForm() {
 							<br />
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label>Dirección</Form.Label>
-								<Form.Control as="textarea" rows={3} onChange={e => setDirección(e.target.value)} />
+								<Form.Control
+									as="textarea"
+									rows={3}
+									onChange={e => setDirección(e.target.value)}
+									value={direccion}
+								/>
 							</Form.Group>
 						</Form.Group>
 
@@ -161,13 +172,28 @@ export function OwnerForm() {
 								type="petname"
 								placeholder="Enter pet's name"
 								onChange={e => setNombrePet(e.target.value)}
+								value={nombrePet}
 							/>
 						</Form.Group>
 						<Form.Label style={{ marginBottom: "20px" }}>Tipo de mascota</Form.Label>
 						{["checkbox"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
-								<Form.Check inline label="Cat" type={type} id={`inline-${type}-1`} value="check1" />
-								<Form.Check inline label="Dog" type={type} id={`inline-${type}-2`} value="check2" />
+								<Form.Check
+									inline
+									label="Cat"
+									type={type}
+									id={`inline-${type}-1`}
+									value="cat"
+									onChange={e => setEspecie(e.target.value)}
+								/>
+								<Form.Check
+									inline
+									label="Dog"
+									type={type}
+									id={`inline-${type}-2`}
+									value="dog"
+									onChange={e => setEspecie(e.target.value)}
+								/>
 							</div>
 						))}
 						<br />
@@ -177,20 +203,40 @@ export function OwnerForm() {
 								type="petname"
 								placeholder="Enter pet's breed"
 								onChange={e => setRaza(e.target.value)}
+								value={raza}
 							/>
 						</Form.Group>
 						<br />
 						<Form.Label style={{ marginBottom: "20px" }}>Género</Form.Label>
 						{["radio"].map(type => (
 							<div key={`inline-${type}`} className="mr-6">
-								<Form.Check inline label="Male" type={type} id={`inline-${type}-7`} />
-								<Form.Check inline label="Female" type={type} id={`inline-${type}-8`} />
+								<Form.Check
+									inline
+									label="Male"
+									type={type}
+									id={`inline-${type}-7`}
+									value="male"
+									onChange={e => setEspecie(e.target.value)}
+								/>
+								<Form.Check
+									inline
+									label="Female"
+									type={type}
+									id={`inline-${type}-8`}
+									value="female"
+									onChange={e => setEspecie(e.target.value)}
+								/>
 							</div>
 						))}
 						<br />
 						<Form.Group controlId="exampleForm.SelectCustomSizeSm">
 							<Form.Label>Edad</Form.Label>
-							<Form.Control as="select" size="sm" custom>
+							<Form.Control
+								as="select"
+								size="sm"
+								custom
+								value={edad}
+								onChange={e => setEdad(e.target.value)}>
 								<option>1-2 años</option>
 								<option>2-5 años</option>
 								<option>5-10 años</option>
@@ -203,9 +249,30 @@ export function OwnerForm() {
 								<Form.Label style={{ marginBottom: "20px" }}>Peso</Form.Label>
 								{["checkbox"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
-										<Form.Check inline label="2-10 lbs" type={type} id={`inline-${type}-1`} />
-										<Form.Check inline label="10-15 lbs" type={type} id={`inline-${type}-2`} />
-										<Form.Check inline label="+25 lbs" type={type} id={`inline-${type}-3`} />
+										<Form.Check
+											inline
+											label="2-10 lbs"
+											type={type}
+											id={`inline-${type}-1`}
+											value="2-10"
+											onChange={e => setEspecie(e.target.value)}
+										/>
+										<Form.Check
+											inline
+											label="10-15 lbs"
+											type={type}
+											id={`inline-${type}-2`}
+											value="10-15"
+											onChange={e => setEspecie(e.target.value)}
+										/>
+										<Form.Check
+											inline
+											label="+25 lbs"
+											type={type}
+											id={`inline-${type}-3`}
+											value="+25"
+											onChange={e => setEspecie(e.target.value)}
+										/>
 									</div>
 								))}
 								<br />
@@ -217,8 +284,22 @@ export function OwnerForm() {
 
 								{["radio"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
-										<Form.Check inline label="Sí" type={type} id={`inline-${type}-7`} />
-										<Form.Check inline label="No" type={type} id={`inline-${type}-8`} />
+										<Form.Check
+											inline
+											label="Sí"
+											type={type}
+											id={`inline-${type}-7`}
+											value={true}
+											onChange={e => setEspecie(e.target.value)}
+										/>
+										<Form.Check
+											inline
+											label="No"
+											type={type}
+											id={`inline-${type}-8`}
+											value={false}
+											onChange={e => setEspecie(e.target.value)}
+										/>
 									</div>
 								))}
 
@@ -228,8 +309,22 @@ export function OwnerForm() {
 
 								{["radio"].map(type => (
 									<div key={`inline-${type}`} className="mr-6">
-										<Form.Check inline label="Sí" type={type} id={`inline-${type}-7`} />
-										<Form.Check inline label="No" type={type} id={`inline-${type}-8`} />
+										<Form.Check
+											inline
+											label="Sí"
+											type={type}
+											id={`inline-${type}-7`}
+											value={true}
+											onChange={e => setEspecie(e.target.value)}
+										/>
+										<Form.Check
+											inline
+											label="No"
+											type={type}
+											id={`inline-${type}-8`}
+											value={false}
+											onChange={e => setEspecie(e.target.value)}
+										/>
 									</div>
 								))}
 							</Form>
@@ -238,13 +333,18 @@ export function OwnerForm() {
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label>Breve descripción de la mascota</Form.Label>
-								<Form.Control as="textarea" rows={4} />
+								<Form.Control
+									as="textarea"
+									rows={4}
+									value={descripcion}
+									onChange={e => setDescripcion(e.target.value)}
+								/>
 							</Form.Group>
 
 							<br />
 						</Form>
 					</Card.Text>
-					<Button variant="primary">Crear perfil</Button>
+					<Button variant="primary">Guardar perfil</Button>
 				</Card.Body>
 			</Card>
 		</div>

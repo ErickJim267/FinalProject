@@ -1,12 +1,17 @@
 import React from "react";
 import { Form, Card, Col, Button } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
 export function BuddyForm() {
+	const { store, actions } = React.useContext(Context);
+
 	return (
 		<div>
 			<Card style={{ width: "50rem", margin: "auto" }}>
 				<Card.Body>
-					<Card.Header>Crear perfil - Buddy</Card.Header>
+					<Card.Header style={{ fontSize: "1.8rem", fontWeight: "600" }}>
+						Complete los datos de su perfil
+					</Card.Header>
 
 					<br />
 
@@ -159,7 +164,7 @@ export function BuddyForm() {
 							</Form.Group>
 						</Form>
 					</Card.Text>
-					<Button variant="primary">Crear perfil</Button>
+					<Button variant="primary">Guardar perfil</Button>
 				</Card.Body>
 			</Card>
 		</div>

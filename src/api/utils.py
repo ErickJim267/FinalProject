@@ -66,10 +66,10 @@ def load_users():
             db.session.commit()
             
             if user['user_role'] == 'owner':
-                new_owner = Owner(id=shortuuid.uuid(), user_id=_id)    
+                new_owner = Owner(user_id=_id)    
                 db.session.add(new_owner)
                 db.session.commit()
             else:
-                new_buddy = Buddy(id=shortuuid.uuid(), user_id=_id)    
+                new_buddy = Buddy(user_id=_id)    
                 db.session.add(new_buddy)
                 db.session.commit()

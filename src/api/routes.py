@@ -6,7 +6,8 @@ import shortuuid
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Owner, Buddy, Address, Reservation, Comment, Pet
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, current_user
+import datetime
 
 
 api = Blueprint('api', __name__)
@@ -65,13 +66,16 @@ def create_token():
         return 'You need to specify the email', 400
 
     user = User.query.filter_by(email=email).one_or_none()
+    print(user)
 
     if not user or not user.check_password(password):
+     #if email != user.email or password != user.password:
         # user not found on the db o password error
-        return jsonify({"msg": "Invalidate email or password"})
+        return jsonify({"msg": "Invalidate email or password"}), 401
     else:
+        expiration = datetime.timedelta(days=1)
         # create a new token with user_id
-        access_token = create_access_token(identity=user)
+        access_token = create_access_token(identity=user, expires_delta=expiration)
         return jsonify({"token" : access_token, "user_id" : user.id}), 200
 
 ## OBTENER TODOS LOS BUDDYS ##
@@ -84,6 +88,23 @@ def get_all_buddy():
     else:
         buddy_content = [{ "buddy": dict(user.to_dict(), **buddy.to_dict()) } for user, buddy in result]
         return jsonify(buddy_content), 200
+    
+## OBTENER USUARIO LOGUEADO ##
+@api.route("/user_logged", methods=["GET"])
+@jwt_required()
+def get_user():
+    result = None
+    
+    if  current_user.user_role == "buddy":
+        result = db.session.query(User, Buddy).join(User.buddy).filter(User.id == current_user.id)
+    else:
+        result = db.session.query(User, Owner).join(User.owner).filter(User.id == current_user.id)
+        
+    if result is None:
+        return jsonify({"msg": 'No existing User yet!'}), 409
+    else:
+        role_content = [{ "user": dict(user.to_dict(), **role.to_dict()) } for user, role in result]
+        return jsonify(role_content), 200
 
 ## ACTUALIZAR BUDDY ##
 @api.route("/buddy/<string:id>", methods=["PUT"])

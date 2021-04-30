@@ -7,7 +7,7 @@ import SectionTab from "./sectionTab";
 import Info from "./info";
 
 export const Home = () => {
-	//const { store, actions } = useContext(Context);
+	// const { store, actions } = useContext(Context);
 
 	return (
 		<div>
