@@ -10,6 +10,9 @@ import { Navbar } from "./component/navbar";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
+import { Search } from "./pages/search";
+import { ProfileBuddyView } from "./pages/profileBuddyView";
+import { Owner_profile } from "./pages/owner_profile";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
