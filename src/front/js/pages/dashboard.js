@@ -17,7 +17,7 @@ export function Dashboard() {
 					<Nav>
 						<Nav.Link href="#notificaciones">Notificaciones</Nav.Link>
 						<Nav.Link eventKey={2} href="#cerrarsesion">
-							Cerrar Sesion
+							Cerrar Sesión
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
@@ -25,11 +25,11 @@ export function Dashboard() {
 
 			<br />
 
-			<h6>Welcome User</h6>
+			<h6>Bienvenido!</h6>
 
 			<br />
-			<BuddyForm />
-			{/* <OwnerForm /> */}
+			{/* <BuddyForm /> */}
+			<OwnerForm />
 		</div>
 	);
 }

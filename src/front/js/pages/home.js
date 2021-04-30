@@ -54,14 +54,16 @@ export const Home = () => {
 						<Form.Group as={Col} controlId="formGridState">
 							<Form.Label>Busco</Form.Label>
 							<Form.Control as="select" defaultValue="Choose...">
+								<option hidden>Para mi mascota</option>
 								<option>Paseos</option>
-								<option>Hospedaje</option>
+								<option>Alojamiento</option>
 							</Form.Control>
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="formGridState">
 							<Form.Label>En</Form.Label>
 							<Form.Control as="select" defaultValue="Choose...">
+								<option hidden>Mi ubicación</option>
 								<option>San José</option>
 								<option>Heredia</option>
 								<option>Alajuela</option>
@@ -72,9 +74,9 @@ export const Home = () => {
 							</Form.Control>
 						</Form.Group>
 					</Form.Row>
-					<div>
+					<div className="btnSearch">
 						<Link to="/search">
-							<Button className="btnSearch" variant="primary" type="submit">
+							<Button variant="primary" type="submit">
 								Buscar
 								<i className="fas fa-search" />
 							</Button>

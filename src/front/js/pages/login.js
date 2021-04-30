@@ -1,19 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export function Login() {
 	const [validated, setValidated] = useState(false);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const { store, actions } = useContext(Context);
 
-	const handleSubmit = event => {
-		const form = event.currentTarget;
-		if (form.checkValidity() === false) {
-			event.preventDefault();
-			event.stopPropagation();
+	const handleSubmit = e => {
+		e.preventDefault();
+		if (!validateForm(e)) return;
+		actions.login(email, password);
+	};
+	const validateForm = e => {
+		if (email.trim() === "") {
+			alert("Debe de escribir un email");
+			return false;
+		}
+		if (password === "") {
+			alert("Debe de escribir una contraseña");
+			return false;
 		}
 
-		setValidated(true);
+		return true;
+	};
+
+	const resetForm = () => {
+		setEmail("");
+		setPassword("");
 	};
 
 	return (
@@ -23,33 +40,37 @@ export function Login() {
 					<Card.Title>
 						<h1>Log In</h1>
 					</Card.Title>
-
 					<br />
-
 					<div>
-						<Form noValidate validated={validated} onSubmit={handleSubmit}>
+						<Form onSubmit={handleSubmit}>
 							<br />
-
 							<Form.Group controlId="formBasicEmail">
 								<Form.Label>Email address</Form.Label>
-								<Form.Control required type="email" placeholder="Enter email" />
+								<Form.Control
+									required
+									type="email"
+									placeholder="Enter email"
+									value={email}
+									onChange={e => setEmail(e.target.value)}
+								/>
 								<Form.Text className="text-muted" />
 							</Form.Group>
-
 							<br />
-
 							<Form.Group controlId="formBasicPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control required type="password" placeholder="Password" />
+								<Form.Control
+									required
+									type="password"
+									placeholder="Password"
+									value={password}
+									onChange={e => setPassword(e.target.value)}
+								/>
 							</Form.Group>
-
 							<br />
-
 							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
 								Login
 							</Button>
 						</Form>
-
 						<br />
 						<Link to="/reset-password">
 							<small className="text-muted">Forgot password?</small>

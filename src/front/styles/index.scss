@@ -1,3 +1,27 @@
 /* 
     General Styles
 */
+@import 'variables';
+
+
+body {
+    font-size: 1rem;
+}
+.btn-info {
+    background-color: $orange-primary;
+    border: 1px solid $orange-primary;
+
+    &:hover {
+        background-color: $orange-secondary;
+        border: 1px solid $orange-secondary;
+    }
+}
+
+.card-rating {
+    span {
+        color: #FFCF33;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-right: .3rem;
+    }
+}

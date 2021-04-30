@@ -21,7 +21,7 @@ export function Resetpassword() {
 			<Card>
 				<Card.Body>
 					<Card.Title>
-						<h1>Reset Password</h1>
+						<h1>Recuperación del Password</h1>
 					</Card.Title>
 
 					<br />
@@ -31,26 +31,24 @@ export function Resetpassword() {
 							<br />
 
 							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control required type="email" placeholder="Enter email" />
+								<Form.Label>E-mail</Form.Label>
+								<Form.Control required type="email" placeholder="Ingrese su E-mail" />
 								<Form.Text className="text-muted" />
 							</Form.Group>
 
-							<small className="text-muted">
-								You will receive your password in your registed mailbox
-							</small>
+							<small className="text-muted">Recibirá un correo con los pasos a seguir</small>
 							<br />
 
 							<br />
 
 							<Button variant="primary" type="submit" style={{ backgroundColor: "#de681f" }}>
-								Reset password
+								Recuperar password
 							</Button>
 						</Form>
 
 						<br />
 
-						<small className="text-muted">Back to Home</small>
+						{/* <small className="text-muted">Back to Home</small> */}
 					</div>
 				</Card.Body>
 			</Card>
@@ -58,7 +56,6 @@ export function Resetpassword() {
 				<Card.Img
 					variant="center"
 					src="https://www.elrancaguino.cl/wp-content/uploads/2019/02/perro-y-gato.jpg"
-					thumbnail
 				/>
 			</Card>
 		</CardGroup>
