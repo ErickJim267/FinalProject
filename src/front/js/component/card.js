@@ -1,23 +1,25 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "../../styles/card.scss";
 
 const Card = ({ buddy }) => {
+	console.log(buddy);
 	return (
-		<div className="card">
+		<div className="card card-buddy">
 			<div className="card-body py-2 px-2">
 				<div className="card-features d-flex">
 					<img
 						className="img-fluid card-img-profile mr-2"
-						src={`../../img/avatar_photos/${buddy.user_photo}.png`}
+						src="https://via.placeholder.com/60"
 						alt="img-profile"
 					/>
 					<div className="card-info">
-						<h6 className="card-name font-weight-bold">{buddy.name}</h6>
+						<h6 className="card-name font-weight-bold">Jean Smith</h6>
 						<div className="card-description">
-							<p className="card-text font-weight-bold m-0">{buddy.about_me_short}</p>
+							<p className="card-text font-weight-bold m-0">Amante de las mascotas</p>
 							<span className="card-address d-block text-muted">
-								<small>2.5 Km - {buddy.addresses[0].provincia}</small>
+								<small>2.5 Km - San Pedro</small>
 							</span>
 						</div>
 						<div className="card-rating">
@@ -25,7 +27,7 @@ const Card = ({ buddy }) => {
 							<span>★</span>
 							<span>★</span>
 							<span>★</span>
-							<span>☆</span> {buddy.comments[0].count_rating} Reseñas
+							<span>☆</span> 10 Reseñas
 						</div>
 					</div>
 					<div className="card-price text-center ml-auto">
@@ -55,3 +57,6 @@ const Card = ({ buddy }) => {
 };
 
 export default Card;
+Card.propTypes = {
+	buddy: PropTypes.object
+};

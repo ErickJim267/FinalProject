@@ -11,16 +11,13 @@ const Search = () => {
 		actions.getAllBuddies();
 	}, []);
 
-	if (store.buddyList > 0) {
-	}
-
 	return (
 		<div className="container-fluid py-2 my-5">
 			<FormSearch />
 			<div className="row mt-3">
-				<div className="col-md-12 border">
+				<div className="col-md-10 border">
 					<div className="row row-cols-2">
-						{store.buddyList > 0 &&
+						{/* {store.buddyList > 0 &&
 							store.buddylist.map(item => {
 								<div className="col-md-6 mb-3 px-2">
 									<Link
@@ -29,14 +26,19 @@ const Search = () => {
 										<Card key={item.buddy.id} buddy={item.buddy} />
 									</Link>
 								</div>;
-							})}
+							})} */}
 						<div className="col-md-3 mb-3 px-2">
-							<Link to="/owner-profile" className="text-decoration-none text-reset">
+							<Link to="/buddy-profile/1" className="text-decoration-none text-reset">
 								<Card />
 							</Link>
 						</div>
 						<div className="col-md-3 mb-3 px-2">
-							<Link to="/owner-profile" className="text-decoration-none text-reset">
+							<Link to="/buddy-profile/2" className="text-decoration-none text-reset">
+								<Card />
+							</Link>
+						</div>
+						<div className="col-md-3 mb-3 px-2">
+							<Link to="/buddy-profile/3" className="text-decoration-none text-reset">
 								<Card />
 							</Link>
 						</div>

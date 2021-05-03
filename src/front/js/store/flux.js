@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const res = await fetch(process.env.BACKEND_URL + "/api/register", opts);
 					if (res.status !== 200) {
-						alert("Sucedió un error");
+						alert("Usuario ya existe");
 						return false;
 					}
 					const data = await res.json();

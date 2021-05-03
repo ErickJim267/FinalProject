@@ -1,10 +1,14 @@
 @import 'variables';
 
 .card { 
-    width: 100%;
-    background-color: antiquewhite;
+    
     font-size: 14px; 
 }
+.card-buddy {
+    width: 100%;
+    background-color: antiquewhite;
+}
+
 
 .card-img-profile {
     height: 80px;

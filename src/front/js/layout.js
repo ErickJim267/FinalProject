@@ -10,8 +10,8 @@ import { Navbar } from "./component/navbar";
 //import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
-import { ProfileBuddyView } from "./pages/profileBuddyView";
-import { Owner_profile } from "./pages/owner_profile";
+import ProfileBuddyView from "./pages/profileBuddyView";
+import Owner_profile from "./pages/owner_profile";
 import Search from "./pages/search";
 
 const Layout = () => {

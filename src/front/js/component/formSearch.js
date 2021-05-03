@@ -19,7 +19,7 @@ const FormSearch = () => {
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectLocation">Location</label> */}
 					<select className="form-control" id="SelectLocation" name="provincia">
-						<option hidden>Select to location</option>
+						<option hidden>Seleccione provincia</option>
 						<option value={1}>San José</option>
 						<option value={2}>Alajuela</option>
 						<option value={3}>Cartago</option>
@@ -32,7 +32,7 @@ const FormSearch = () => {
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
 					<select id="selectService" className="form-control">
-						<option hidden>Service Type</option>
+						<option hidden>Tipo de servicio</option>
 						<option>Alojamiento</option>
 						<option>Paseo</option>
 						<option>Guardería</option>
@@ -44,21 +44,20 @@ const FormSearch = () => {
 						onChange={date => setStartDate(date)}
 						dateFormat="dd/MM/yyyy"
 						className="form-control"
-						placeholderText="Choose start date"
+						placeholderText="Selecciones una fecha"
 					/>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					<select id="selectService" className="form-control">
-						<option hidden>Pet Type</option>
-						<option>Alojamiento</option>
-						<option>Paseo</option>
-						<option>Guardería</option>
+						<option hidden>Tipo mascota</option>
+						<option>Gato</option>
+						<option>Perro</option>
 					</select>
 				</div>
 				<div className="col-sm-12 col-md-2 mb-3 mb-md-0">
 					{/* <label htmlFor="selectService">Service Type</label> */}
 					<select id="selectService" className="form-control">
-						<option hidden>Dog size (kg)</option>
+						<option hidden>Tamaño mascota (kg)</option>
 						<option>1-10</option>
 						<option>11-25</option>
 						<option>26-45</option>

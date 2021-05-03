@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import short from "short-uuid";
 
 import { Context } from "../store/appContext";
@@ -14,7 +14,7 @@ export function Register() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passConfirm, setPassConfirm] = useState("");
-	const [auth, setAuth] = useState(false);
+	const history = useHistory();
 
 	const { store, actions } = useContext(Context);
 
@@ -28,10 +28,11 @@ export function Register() {
 		const user = { id, role, name, lastName, email, password };
 
 		actions.registerUser(user).then(res => {
-			if (res) {
+			console.log(res);
+			if (res == true) {
 				//reset formulario
 				resetForm();
-				setAuth(true);
+				history.push("/login");
 			}
 		});
 	};
@@ -188,7 +189,6 @@ export function Register() {
 					src="https://jngnposwzs-flywheel.netdna-ssl.com/wp-content/uploads/2019/05/Transparent-OrangeWhiteCat-764x1024.png"
 				/>
 			</Card>
-			{auth ? <Redirect to="/login" /> : null}
 		</CardGroup>
 	);
 }

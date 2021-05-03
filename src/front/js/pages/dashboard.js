@@ -3,7 +3,7 @@ import { Navbar, Nav, Button } from "react-bootstrap";
 import { BuddyForm } from "../component/buddyForm";
 import { OwnerForm } from "../component/ownerForm";
 import { Context } from "../store/appContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 export function Dashboard() {
 	const { store, actions } = React.useContext(Context);
@@ -39,10 +39,13 @@ export function Dashboard() {
 						<Nav.Link href="#p" />
 					</Nav>
 					<Nav>
-						<Nav.Link href="#notificaciones">Notificaciones</Nav.Link>
+						<Link to="/owner-profile/1">
+							<Nav.Link href="#notificaciones">Notificaciones</Nav.Link>
+						</Link>
 						{/* <Nav.Link eventKey={2} href="#cerrarsesion">
 							Cerrar Sesión
 						</Nav.Link> */}
+
 						<Button
 							style={{ fontSize: "23px", color: "rgba(0, 0, 0, 0.5)" }}
 							variant="outline-secondary"

@@ -12,17 +12,25 @@ export function OwnerForm() {
 	const [mes, setMes] = useState("");
 	const [dia, setDia] = useState("");
 	const [año, setAño] = useState("");
-	const [provincia, setProvincia] = useState(store.userLogged.addresses[0].provicia);
-	const [direccion, setDireccion] = useState(store.userLogged.addresses[0].exact_address);
-	const [nombrePet, setNombrePet] = useState(store.userLogged.pets[0].pet_name);
-	const [raza, setRaza] = useState(store.userLogged.pets[0].breed);
-	const [especie, setEspecie] = useState(store.userLogged.pets[0].specie);
-	const [genero, setGenero] = useState(store.userLogged.pets[0].sex);
-	const [peso, setPeso] = useState(store.userLogged.pets[0].size);
-	const [vacunado, setVacuna] = useState(store.userLogged.pets[0].vaccinate);
-	const [desparasitado, setDesparasitado] = useState(store.userLogged.pets[0].dewormed);
-	const [descripcion, setDescripcion] = useState(store.userLogged.pets[0].personality);
-	const [edad, setEdad] = useState(store.userLogged.pets[0].range_age);
+	const [provincia, setProvincia] = useState(
+		store.userLogged.addresses[0] > 0 ? store.userLogged.addresses[0].provincia : ""
+	);
+	const [direccion, setDireccion] = useState(
+		store.userLogged.addresses[0] > 0 ? store.userLogged.addresses[0].exact_address : ""
+	);
+	const [nombrePet, setNombrePet] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].pet_name : "");
+	const [raza, setRaza] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].breed : "");
+	const [especie, setEspecie] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].specie : "");
+	const [genero, setGenero] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].sex : "");
+	const [peso, setPeso] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].size : "");
+	const [vacunado, setVacuna] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].vaccinate : "");
+	const [desparasitado, setDesparasitado] = useState(
+		store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].dewormed : ""
+	);
+	const [descripcion, setDescripcion] = useState(
+		store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].personality : ""
+	);
+	const [edad, setEdad] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].range_age : "");
 
 	return (
 		<div>
