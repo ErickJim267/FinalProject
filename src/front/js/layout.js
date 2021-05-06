@@ -36,7 +36,9 @@ const Layout = () => {
 							<Register />
 						</Route>
 						{/* Ruta protegida */}
-						<PrivateRoute exact path="/dashboard" component={Dashboard} />
+						<PrivateRoute exact path="/dashboard">
+							<Dashboard />
+						</PrivateRoute>
 						<Route exact path="/reset-password">
 							<Resetpassword />
 						</Route>

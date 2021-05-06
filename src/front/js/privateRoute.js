@@ -2,21 +2,21 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { Context } from "./store/appContext";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRoute = ({ children, ...rest }) => {
 	const { store } = React.useContext(Context);
 	console.log(store.token);
 	return (
 		<Route
 			{...rest}
-			render={routeProps =>
+			render={ ({location}) =>
 				store.token ? (
-					<Component {...routeProps} />
+					children
 				) : (
-					<Redirect
-						to={{
-							pathname: "/",
-							state: { from: routeProps.location }
-						}}
+					<Redirect to="/"
+					// <Redirect to= {{
+					// 	pathname: "/",
+              		// 	state: { from: location }
+					// }}
 					/>
 				)
 			}
