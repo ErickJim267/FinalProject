@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { Form, Button } from "react-bootstrap";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import short from "short-uuid";
 
 import { Context } from "../store/appContext";
@@ -28,9 +28,8 @@ export function Register() {
 		const user = { id, role, name, lastName, email, password };
 
 		actions.registerUser(user).then(res => {
-			console.log(res);
+			// console.log(res);
 			if (res == true) {
-				//reset formulario
 				resetForm();
 				history.push("/login");
 			}

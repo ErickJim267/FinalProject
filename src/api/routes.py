@@ -90,7 +90,7 @@ def get_all_buddy():
         return jsonify(buddy_content), 200
     
 ## OBTENER USUARIO LOGUEADO ##
-@api.route("/user_logged", methods=["GET"])
+@api.route("/user-logged", methods=["GET"])
 @jwt_required()
 def get_user():
     result = None

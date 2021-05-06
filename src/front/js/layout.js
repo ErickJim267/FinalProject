@@ -1,5 +1,5 @@
 import React, { Profiler } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
@@ -7,15 +7,18 @@ import { Register } from "./pages/register";
 import { Resetpassword } from "./pages/resetpassword";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
-//import { Info } from "./pages/info";
 import { Footer } from "./component/footer";
 import { Dashboard } from "./pages/dashboard";
 import ProfileBuddyView from "./pages/profileBuddyView";
 import Owner_profile from "./pages/owner_profile";
 import Search from "./pages/search";
+import PrivateRoute from "./privateRoute";
+
+import { Context } from "./store/appContext";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
+	const { store } = React.useContext(Context);
 
 	return (
 		<div className="d-flex flex-column h-100">
@@ -32,9 +35,8 @@ const Layout = () => {
 						<Route exact path="/register">
 							<Register />
 						</Route>
-						<Route exact path="/dashboard">
-							<Dashboard />
-						</Route>
+						{/* Ruta protegida */}
+						<PrivateRoute exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/reset-password">
 							<Resetpassword />
 						</Route>
@@ -45,7 +47,6 @@ const Layout = () => {
 							<ProfileBuddyView />
 						</Route>
 						<Route exact path="/owner-profile/:id">
-							{/* vista del perfil del owner */}
 							<Owner_profile />
 						</Route>
 					</Switch>

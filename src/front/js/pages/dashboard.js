@@ -1,13 +1,11 @@
 import React from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+// import { Navbar, Nav, Button } from "react-bootstrap";
 import { BuddyForm } from "../component/buddyForm";
 import { OwnerForm } from "../component/ownerForm";
 import { Context } from "../store/appContext";
-import { useHistory, Link } from "react-router-dom";
 
 export function Dashboard() {
 	const { store, actions } = React.useContext(Context);
-	const history = useHistory();
 
 	React.useEffect(
 		() => {
@@ -18,34 +16,23 @@ export function Dashboard() {
 		[store.token]
 	);
 
-	const cerrarSesion = () => {
-		actions.logout();
-		history.push("/");
-	};
-
 	return (
 		<div>
-			<Navbar
+			{/* <Navbar
 				style={{ marginBottom: ".8rem", padding: "2rem 1rem" }}
 				collapseOnSelect
 				expand="lg"
 				bg="light"
 				variant="light">
-				<Navbar.Brand href="#home">PetBnB</Navbar.Brand>
+				<Link to="/">
+					<Navbar.Brand>PetBnB</Navbar.Brand>
+				</Link>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
-					<Nav className="mr-auto">
-						<Nav.Link href="#f" />
-						<Nav.Link href="#p" />
-					</Nav>
-					<Nav>
+					<Nav className="ml-auto">
 						<Link to="/owner-profile/1">
-							<Nav.Link href="#notificaciones">Notificaciones</Nav.Link>
+							<Nav.Link href="#">Notificaciones</Nav.Link>
 						</Link>
-						{/* <Nav.Link eventKey={2} href="#cerrarsesion">
-							Cerrar Sesión
-						</Nav.Link> */}
-
 						<Button
 							style={{ fontSize: "23px", color: "rgba(0, 0, 0, 0.5)" }}
 							variant="outline-secondary"
@@ -54,10 +41,10 @@ export function Dashboard() {
 						</Button>
 					</Nav>
 				</Navbar.Collapse>
-			</Navbar>
+			</Navbar> */}
 
 			<br />
-			{store.userLogged !== null && (
+			{store.userLogged && (
 				<>
 					<h3 className="mt-5">
 						Bienvenido: {store.userLogged.name.toUpperCase()} {store.userLogged.last_name.toUpperCase()}

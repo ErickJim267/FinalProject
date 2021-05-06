@@ -1,21 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			token: null,
-			userLogged: null,
+			token: localStorage.getItem("token"),
+			userLogged: null, // Almacenamos el usuario logueado
 			recentlyRegister: false,
 			buddyList: []
 		},
@@ -28,14 +15,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 
-				const res = await fetch(process.env.BACKEND_URL + "/api/user_logged", opts);
+				const res = await fetch(process.env.BACKEND_URL + "/api/user-logged", opts);
 				const data = await res.json();
-				console.log(data[0].user);
-				setStore({ ...getStore(), userLogged: data[0].user });
+				setStore({ ...store, userLogged: data[0].user });
 			},
 			syncTokenFromLocalStorage: () => {
 				const token = localStorage.getItem("token");
-				if (token && token != "" && token != undefined) setStore({ ...getStore(), token: token });
+				if (token && token != "" && token != undefined) {
+					setStore({ ...getStore(), token: token });
+				}
 			},
 			registerUser: async user => {
 				const opts = {
@@ -85,9 +73,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				const data = await resp.json();
-				console.log(data);
 				localStorage.setItem("token", data.token);
-				setStore({ ...getStore(), token: data.token });
+				setStore({ ...store, token: data.token });
 				return true;
 			},
 			logout: () => {
@@ -98,13 +85,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const res = await fetch(process.env.BACKEND_URL + "/api/buddy");
 				const data = await res.json();
 				setStore({ ...getStore(), buddyList: data });
-			},
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
 			}
 		}
 	};
