@@ -6,31 +6,31 @@ import { Context } from "../store/appContext";
 export function OwnerForm() {
 	const { store, actions } = React.useContext(Context);
 
-	const [nombre, setNombre] = useState(store.userLogged.name);
-	const [apellidos, setApellidos] = useState(store.userLogged.last_name);
-	const [telefono, setTelefono] = useState(store.userLogged.phone);
+	const [nombre, setNombre] = useState(store.userAuth.name);
+	const [apellidos, setApellidos] = useState(store.userAuth.last_name);
+	const [telefono, setTelefono] = useState(store.userAuth.phone);
 	const [mes, setMes] = useState("");
 	const [dia, setDia] = useState("");
 	const [año, setAño] = useState("");
 	const [provincia, setProvincia] = useState(
-		store.userLogged.addresses[0] > 0 ? store.userLogged.addresses[0].provincia : ""
+		store.userAuth.addresses[0] > 0 ? store.userAuth.addresses[0].provincia : ""
 	);
 	const [direccion, setDireccion] = useState(
-		store.userLogged.addresses[0] > 0 ? store.userLogged.addresses[0].exact_address : ""
+		store.userAuth.addresses[0] > 0 ? store.userAuth.addresses[0].exact_address : ""
 	);
-	const [nombrePet, setNombrePet] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].pet_name : "");
-	const [raza, setRaza] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].breed : "");
-	const [especie, setEspecie] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].specie : "");
-	const [genero, setGenero] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].sex : "");
-	const [peso, setPeso] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].size : "");
-	const [vacunado, setVacuna] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].vaccinate : "");
+	const [nombrePet, setNombrePet] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].pet_name : "");
+	const [raza, setRaza] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].breed : "");
+	const [especie, setEspecie] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].specie : "");
+	const [genero, setGenero] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].sex : "");
+	const [peso, setPeso] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].size : "");
+	const [vacunado, setVacuna] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].vaccinate : "");
 	const [desparasitado, setDesparasitado] = useState(
-		store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].dewormed : ""
+		store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].dewormed : ""
 	);
 	const [descripcion, setDescripcion] = useState(
-		store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].personality : ""
+		store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].personality : ""
 	);
-	const [edad, setEdad] = useState(store.userLogged.pets[0] > 0 ? store.userLogged.pets[0].range_age : "");
+	const [edad, setEdad] = useState(store.userAuth.pets[0] > 0 ? store.userAuth.pets[0].range_age : "");
 
 	return (
 		<div>

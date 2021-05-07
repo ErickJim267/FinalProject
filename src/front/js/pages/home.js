@@ -3,8 +3,8 @@ import React from "react";
 import "../../styles/home.scss";
 import { Jumbotron, Carousel, Form, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import SectionTab from "./sectionTab";
-import Info from "./info";
+import SectionTab from "../component/sectionTab";
+import Info from "../component/info";
 
 export const Home = () => {
 	// const { store, actions } = useContext(Context);

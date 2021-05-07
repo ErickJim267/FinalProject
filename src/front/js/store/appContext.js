@@ -29,6 +29,9 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			// state.actions.syncTokenFromLocalStorage(); // <---- calling this function from the flux.js actions
+			// if (state.store.token && state.store.token != "" && state.store.token != undefined) {
+			// 	state.actions.fetchUserLogged();
+			// }
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

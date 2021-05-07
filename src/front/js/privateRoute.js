@@ -5,23 +5,7 @@ import { Context } from "./store/appContext";
 const PrivateRoute = ({ children, ...rest }) => {
 	const { store } = React.useContext(Context);
 	console.log(store.token);
-	return (
-		<Route
-			{...rest}
-			render={ ({location}) =>
-				store.token ? (
-					children
-				) : (
-					<Redirect to="/"
-					// <Redirect to= {{
-					// 	pathname: "/",
-              		// 	state: { from: location }
-					// }}
-					/>
-				)
-			}
-		/>
-	);
+	return <Route {...rest} render={() => (store.token ? children : <Redirect to="/" />)} />;
 };
 
 export default PrivateRoute;

@@ -36,9 +36,16 @@ export const Navbar = () => {
 							</Link>
 						</>
 					) : (
-						<button className="btnNav" style={{ margin: "10px" }} onClick={cerrarSesion}>
-							Cerrar Sesión
-						</button>
+						<>
+							<Link to="/notifications">
+								<button className="btnNav" style={{ margin: "10px" }}>
+									Notificaciones
+								</button>
+							</Link>
+							<button className="btnNav" style={{ margin: "10px" }} onClick={cerrarSesion}>
+								Cerrar Sesión
+							</button>
+						</>
 					)}
 				</div>
 			) : null}

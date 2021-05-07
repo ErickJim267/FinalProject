@@ -10,7 +10,7 @@ export function Dashboard() {
 	React.useEffect(
 		() => {
 			if (store.token && store.token != "" && store.token != undefined) {
-				actions.fetchUserLogged();
+				actions.fetchUserAuth();
 			}
 		},
 		[store.token]
@@ -44,13 +44,13 @@ export function Dashboard() {
 			</Navbar> */}
 
 			<br />
-			{store.userLogged && (
+			{store.userAuth && (
 				<>
 					<h3 className="mt-5">
-						Bienvenido: {store.userLogged.name.toUpperCase()} {store.userLogged.last_name.toUpperCase()}
+						Bienvenido: {store.userAuth.name.toUpperCase()} {store.userAuth.last_name.toUpperCase()}
 					</h3>
 					<br />
-					{store.userLogged.user_role === "buddy" ? <BuddyForm /> : <OwnerForm />}
+					{store.userAuth.user_role === "buddy" ? <BuddyForm /> : <OwnerForm />}
 				</>
 			)}
 		</div>

@@ -15,6 +15,7 @@ import Search from "./pages/search";
 import PrivateRoute from "./privateRoute";
 
 import { Context } from "./store/appContext";
+import Notifications from "./pages/notifications";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -38,6 +39,9 @@ const Layout = () => {
 						{/* Ruta protegida */}
 						<PrivateRoute exact path="/dashboard">
 							<Dashboard />
+						</PrivateRoute>
+						<PrivateRoute exact path="/notifications">
+							<Notifications />
 						</PrivateRoute>
 						<Route exact path="/reset-password">
 							<Resetpassword />

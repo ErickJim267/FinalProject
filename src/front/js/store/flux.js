@@ -2,12 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: localStorage.getItem("token"),
-			userLogged: null, // Almacenamos el usuario logueado
+			userAuth: JSON.parse(localStorage.getItem("userAuth")), // Almacenamos el usuario logueado
 			recentlyRegister: false,
 			buddyList: []
 		},
 		actions: {
-			fetchUserLogged: async () => {
+			fetchUserAuth: async () => {
 				const store = getStore();
 				const opts = {
 					headers: {
@@ -15,9 +15,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 
-				const res = await fetch(process.env.BACKEND_URL + "/api/user-logged", opts);
+				const res = await fetch(process.env.BACKEND_URL + "/api/user-auth", opts);
 				const data = await res.json();
-				setStore({ ...store, userLogged: data[0].user });
+				localStorage.setItem("userAuth", JSON.stringify(data[0].user));
+				setStore({ ...store, userAuth: data[0].user });
 			},
 			syncTokenFromLocalStorage: () => {
 				const token = localStorage.getItem("token");
@@ -79,7 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logout: () => {
 				localStorage.removeItem("token");
+				localStorage.removeItem("userAuth");
 				setStore({ ...getStore(), token: null });
+				setStore({ ...getStore(), userAuth: null });
 			},
 			getAllBuddies: async () => {
 				const res = await fetch(process.env.BACKEND_URL + "/api/buddy");
