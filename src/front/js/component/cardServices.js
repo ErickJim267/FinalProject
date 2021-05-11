@@ -29,7 +29,13 @@ const CardServices = () => {
 						<small className="d-block">por noche</small>
 					</div>
 				</div>
-				<div className="btn btn-info btn-block text-uppercase">Reservar</div>
+				<div
+					className="btn btn-info btn-block text-uppercase"
+					data-toggle="modal"
+					data-target="#exampleModal"
+					data-whatever="@getbootstrap">
+					Reservar
+				</div>
 			</div>
 		</div>
 	);
